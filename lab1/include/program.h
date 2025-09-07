@@ -7,4 +7,7 @@ class Program {
 
     void useDefaultStrConstructor();
     void useParameterizedStrConstructor();
+
+  public:
+    Program();
 };
