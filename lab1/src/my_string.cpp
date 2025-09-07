@@ -58,3 +58,7 @@ void String::remove() {
     len = 0;
     cap = 0;
 }
+
+bool String::isEmpty() const {
+    return (data == nullptr && len == 0 && cap == 0);
+}

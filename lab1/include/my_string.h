@@ -13,4 +13,5 @@ class String {
     void show(const char *msg) const;
     void concatenate(String str);
     void remove();
+    bool isEmpty() const;
 };
