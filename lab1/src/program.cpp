@@ -84,3 +84,34 @@ void Program::concatenateStrings() {
 
     std::cout << kGreenColor << "Strings were successfully concatenated!" << kWhiteColor << std::endl;
 }
+
+void Program::run() {
+    int opt = 0;
+
+    showTaskMenu();
+
+    while (true) {
+        std::cout << "\nPlease select a task menu option: ";
+
+        opt = getDigit();
+
+        switch (opt) {
+        case 1:
+            inputString();
+            break;
+        case 2:
+            showString();
+            break;
+        case 3:
+            concatenateStrings();
+            break;
+        case 4:
+            std::cout << kGreenColor << "\nYou have successfully exited the program." << kWhiteColor << std::endl;
+            str.remove();
+            return;
+        default:
+            std::cout << kRedColor << "\nError, you picked is an incorrect menu option. Please try again."
+                      << kWhiteColor << std::endl;
+        }
+    }
+}

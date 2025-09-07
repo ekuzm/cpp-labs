@@ -13,4 +13,6 @@ class Program {
 
   public:
     Program();
+
+    void run();
 };
