@@ -75,7 +75,10 @@ int getDigit() {
                 return check - '0';
             }
 
-            while (std::cin.get() != '\n' && !std::cin.eof()) {
+            while (true) {
+                if (std::cin.get() == '\n') {
+                    break;
+                }
             }
         }
 
