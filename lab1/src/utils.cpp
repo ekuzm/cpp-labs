@@ -63,3 +63,22 @@ char *getString(const char *msg) {
     str[len] = '\0';
     return str;
 }
+
+int getDigit() {
+    int check = 0;
+
+    while (true) {
+        check = std::cin.get();
+
+        if (check != '\n' && check != EOF) {
+            if (isdigit(check) == 1 && std::cin.get() == '\n') {
+                return check - '0';
+            }
+
+            while (std::cin.get() != '\n' && !std::cin.eof()) {
+            }
+        }
+
+        std::cout << "\nError, invalid input. Please try again: ";
+    }
+}
