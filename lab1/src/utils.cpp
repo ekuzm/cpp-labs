@@ -1,4 +1,5 @@
 #include "utils.h"
+#include "consts.h"
 #include <iostream>
 
 int myStrlen(const char *str) {
@@ -54,7 +55,7 @@ char *getString(const char *msg) {
         len++;
 
         if (str[0] == '\0') {
-            std::cout << "\nError, the string cannot be empty.Please try again: ";
+            std::cout << kRedColor << "\nError, the string cannot be empty.Please try again: " << kWhiteColor;
             len = 0;
             cap = 1;
         }
@@ -79,6 +80,6 @@ int getDigit() {
                 ;
         }
 
-        std::cout << "\nError, invalid input. Please try again: ";
+        std::cout << kRedColor << "\nError, invalid input. Please try again: " << kWhiteColor;
     }
 }
