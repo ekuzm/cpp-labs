@@ -7,6 +7,9 @@ class Program {
 
     void useDefaultStrConstructor();
     void useParameterizedStrConstructor();
+    void inputString();
+    void showString() const;
+    void concatenateStrings();
 
   public:
     Program();
