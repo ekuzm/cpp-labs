@@ -15,7 +15,7 @@ int myStrlen(const char *str) {
 }
 
 char *resizeString(char *&str, const int len) {
-    char *new_str = new char[len];
+    auto *new_str = new char[len];
 
     for (int ind = 0; ind < len; ind++) {
         new_str[ind] = '\0';
@@ -35,7 +35,7 @@ char *getString(const char *msg) {
     std ::cout << msg;
 
     int cap = 1;
-    char *str = new char[cap];
+    auto *str = new char[cap];
     int check = 0;
     int len = 0;
     str[len] = '\0';
@@ -75,11 +75,8 @@ int getDigit() {
                 return check - '0';
             }
 
-            while (true) {
-                if (std::cin.get() == '\n') {
-                    break;
-                }
-            }
+            while (std::cin.get() != '\n' && !std::cin.eof())
+                ;
         }
 
         std::cout << "\nError, invalid input. Please try again: ";

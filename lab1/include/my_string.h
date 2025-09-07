@@ -7,7 +7,7 @@ class String {
 
   public:
     String();
-    String(char *&str);
+    explicit String(char *&str);
 
     void input(const char *msg);
     void show(const char *msg) const;
