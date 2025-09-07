@@ -4,5 +4,7 @@
 
 class Program {
     String str;
-};
 
+    void useDefaultStrConstructor();
+    void useParameterizedStrConstructor();
+};
