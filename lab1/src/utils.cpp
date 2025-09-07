@@ -42,7 +42,7 @@ char *getString(const char *msg) {
 
     while (true) {
         check = std::cin.get();
-        if (check != EOF && (char)check != '\n') {
+        if ((char)check == '\n') {
             break;
         }
         if (len + 1 == cap) {

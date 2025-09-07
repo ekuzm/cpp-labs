@@ -28,9 +28,6 @@ void String::input(const char *msg) {
 }
 
 void String::show(const char *msg) const {
-    if (data == nullptr || len == 0) {
-        std::cout << "\nError, your string is empty." << std::endl;
-    }
     std::cout << msg;
     std::cout << data << std::endl;
 }
