@@ -46,14 +46,17 @@ String &String::operator=(const String &other) {
         len = other.len;
 
         delete[] data;
+        data = nullptr;
 
-        data = new char[cap];
+        if (cap > 0) {
+            data = new char[cap];
 
-        for (int i = 0; i < len; i++) {
-            data[i] = other.data[i];
+            for (int i = 0; i < len; i++) {
+                data[i] = other.data[i];
+            }
+
+            data[len] = '\0';
         }
-
-        data[len] = '\0';
     }
     return *this;
 }
