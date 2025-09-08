@@ -5,4 +5,4 @@
 * [CMake](https://cmake.org/cmake/help/latest/guide/tutorial/index.html) - система сборки проектов.
 * [Clang-tidy](https://clang.llvm.org/extra/clang-tidy/#clang-tidy) - линтер для C++
 * [Clang-format](https://clang.llvm.org/docs/ClangFormat.html) - форматтер для C++
-## Отчет по данной лабораторная работе можно найти [здесь]('lab1.pdf')
+## Отчет по данной лабораторная работе можно найти [здесь](lab1.pdf)
