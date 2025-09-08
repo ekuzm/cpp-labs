@@ -107,7 +107,6 @@ void Program::run() {
             break;
         case 4:
             std::cout << kGreenColor << "\nYou have successfully exited the program." << kWhiteColor << std::endl;
-            str.remove();
             return;
         default:
             std::cout << kRedColor << "\nError, you picked is an incorrect menu option. Please try again."

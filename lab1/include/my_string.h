@@ -8,10 +8,14 @@ class String {
   public:
     String();
     explicit String(char *&str);
+    String(const String &other);
+    String(String &&move) noexcept;
+    ~String();
+    String &operator=(const String &other);
+    String &operator=(String &&move) noexcept;
 
     void input(const char *msg);
     void show(const char *msg) const;
     void concatenate(String str);
-    void remove();
     bool isEmpty() const;
 };
