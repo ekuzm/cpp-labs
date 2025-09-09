@@ -6,6 +6,12 @@ include_directories(include)
 
 set(SOURCES 
     src/main.cpp
+    src/array.cpp
 )
 
-add_executable(lab2 {$SOURCES})
+set(HEADERS
+    include/array.h
+    include/array.cpp
+)
+
+add_executable(lab2 {$SOURCES} {HEADERS})
