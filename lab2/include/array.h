@@ -3,7 +3,6 @@
 class Array {
     int *data;
     int size;
-    int cap;
 
   public:
     Array();
@@ -13,4 +12,6 @@ class Array {
     Array(Array &&move) noexcept;
     Array &operator=(const Array &other);
     Array &operator=(Array &&move) noexcept;
+    Array &operator++();
+    Array operator++(int value);
 };
