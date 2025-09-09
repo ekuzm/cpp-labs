@@ -1,6 +1,8 @@
 #include "utils.h"
-#include "consts.h"
+
 #include <iostream>
+
+#include "consts.h"
 
 int myStrlen(const char *str) {
     if (str == nullptr) {

@@ -1,9 +1,10 @@
-#include "program.h"
 #include <iostream>
 
-int main() {
-    Program program;
+#include "program.h"
 
-    program.run();
-    return 0;
+int main() {
+  Program program;
+
+  program.run();
+  return 0;
 }
