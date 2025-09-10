@@ -9,6 +9,7 @@ set(SOURCES
     src/array.cpp
     src/utils.cpp
     src/program.cpp
+    src/menus.cpp
 )
 
 set(HEADERS
@@ -16,6 +17,7 @@ set(HEADERS
     include/utils.h
     include/consts.h
     include/program.h
+    include/menus.h
 )
 
 add_executable(lab2 ${SOURCES} ${HEADERS})

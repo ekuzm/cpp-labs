@@ -4,4 +4,11 @@
 
 class Program {
     Array arr;
+
+    Program();
+    void useDefaultArrayConstructor();
+    void useParameterizedArrayConstructor();
+
+  public:
+    void run();
 };
