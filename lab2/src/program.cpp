@@ -50,7 +50,7 @@ void Program::inputArray() {
     std::cout << kGreenColor << "Array successfully entered using friend function(input)!" << kWhiteColor << std::endl;
 }
 
-void Program::showArray() {
+void Program::showArray() const {
     if (arr.isEmpty()) {
         std::cout << kRedColor
                   << "\nError, array has not been entered. Please use the first or third option and try again!"
