@@ -8,6 +8,9 @@ class Program {
     Program();
     void useDefaultArrayConstructor();
     void useParameterizedArrayConstructor();
+    void inputArray();
+    void showArray();
+    void incrementArray();
 
   public:
     void run();

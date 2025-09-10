@@ -130,3 +130,8 @@ void show(Array arr, const char *msg) {
 
     std::cout << std::endl;
 }
+
+void increment(Array &arr, int num) {
+    arr++;
+    arr.data[arr.size - 1] = num;
+}

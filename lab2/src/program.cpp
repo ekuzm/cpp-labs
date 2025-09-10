@@ -44,6 +44,32 @@ Program::Program() {
     }
 }
 
+void Program::inputArray() {
+    input(arr, "Please enter array elements.\n");
+
+    std::cout << kGreenColor << "Array successfully entered using friend function(input)!" << kWhiteColor << std::endl;
+}
+
+void Program::showArray() {
+    if (arr.isEmpty()) {
+        std::cout << kRedColor
+                  << "\nError, array has not been entered. Please use the first or third option and try again!"
+                  << kWhiteColor << std::endl;
+    }
+    show(arr, "Show array on the screen: ");
+    std::cout << kGreenColor << "The array was successfully displayed on the screen using the friend function(show)!"
+              << kWhiteColor << std::endl;
+}
+
+void Program::incrementArray() {
+    int num = getNumber("Please enter new array element: ");
+
+    increment(arr, num);
+
+    std::cout << kGreenColor << "The array was successfully incremented using the friend function(increment)!"
+              << kWhiteColor << std::endl;
+}
+
 void Program::run() {
     int opt = 0;
 
@@ -54,13 +80,13 @@ void Program::run() {
 
         switch (opt) {
         case 1:
-            // inputArray(arr);
+            inputArray();
             break;
         case 2:
-            // showArray(arr);
+            showArray();
             break;
         case 3:
-            // incrementArray(arr);
+            incrementArray();
             break;
         case 4:
             std::cout << kGreenColor << "\nYou have successfully exited the program." << kWhiteColor << std::endl;

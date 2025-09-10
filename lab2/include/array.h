@@ -18,4 +18,5 @@ class Array {
     bool isEmpty() const;
     friend void input(Array &arr, const char *msg);
     friend void show(Array arr, const char *msg);
+    friend void increment(Array &arr, int num);
 };
