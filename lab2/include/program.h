@@ -5,7 +5,6 @@
 class Program {
     Array arr;
 
-    Program();
     void useDefaultArrayConstructor();
     void useParameterizedArrayConstructor();
     void inputArray();
@@ -13,5 +12,6 @@ class Program {
     void incrementArray();
 
   public:
+    Program();
     void run();
 };

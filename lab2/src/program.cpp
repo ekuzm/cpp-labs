@@ -55,6 +55,7 @@ void Program::showArray() {
         std::cout << kRedColor
                   << "\nError, array has not been entered. Please use the first or third option and try again!"
                   << kWhiteColor << std::endl;
+        return;
     }
     show(arr, "Show array on the screen: ");
     std::cout << kGreenColor << "The array was successfully displayed on the screen using the friend function(show)!"
@@ -76,7 +77,7 @@ void Program::run() {
     showTaskMenu();
 
     while (true) {
-        opt = getNumber("Please select a menu option");
+        opt = getNumber("\nPlease select a menu option: ");
 
         switch (opt) {
         case 1:
