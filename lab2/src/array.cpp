@@ -1,4 +1,7 @@
 #include "array.h"
+#include "consts.h"
+#include "utils.h"
+#include <iostream>
 
 Array::Array() : data(nullptr), size(0) {
 }
@@ -91,4 +94,39 @@ Array Array::operator++(int value) {
     size++;
 
     return temp;
+}
+
+bool Array::isEmpty() const {
+    return (data == nullptr && size == 0);
+}
+
+void input(Array &arr, const char *msg) {
+    if (arr.isEmpty()) {
+        while (true) {
+            arr.size = getNumber("Please enter array size: ");
+            if (arr.size <= 0) {
+                std::cout << kRedColor << "Error, size < 0, please try again." << kWhiteColor << std::endl;
+            } else {
+                break;
+            }
+        }
+        arr.data = new int[arr.size];
+    }
+
+    std::cout << msg;
+
+    for (int i = 0; i < arr.size; i++) {
+        std ::cout << "Element " << i + 1 << ">> ";
+        arr.data[i] = getNumber("");
+    }
+}
+
+void show(Array arr, const char *msg) {
+    std::cout << msg;
+
+    for (int i = 0; i < arr.size; i++) {
+        std::cout << arr.data[i] << " ";
+    }
+
+    std::cout << std::endl;
 }

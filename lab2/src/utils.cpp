@@ -15,8 +15,8 @@ int getNumber(const char *msg) {
             std::cout << kRedColor << "\nError, invalid input. Please try again: " << kWhiteColor;
             continue;
         }
-        if ((std::cin >> num).good() && (std::cin.peek() == '\n' || std::cin.peek() == ' ') && (kMinInt <= num) &&
-            (num <= kMaxInt))
+        if ((std::cin >> num).good() && std::cin.get() == '\n' && (kMinInt <= num) && (num <= kMaxInt)) {
             return num;
+        }
     }
 }

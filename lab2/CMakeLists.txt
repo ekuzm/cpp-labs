@@ -7,11 +7,13 @@ include_directories(include)
 set(SOURCES 
     src/main.cpp
     src/array.cpp
+    src/utils.cpp
 )
 
 set(HEADERS
     include/array.h
-    include/array.cpp
+    include/utils.h
+    include/consts.h
 )
 
-add_executable(lab2 {$SOURCES} {HEADERS})
+add_executable(lab2 ${SOURCES} ${HEADERS})
