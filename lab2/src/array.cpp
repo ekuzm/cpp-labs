@@ -16,11 +16,13 @@ Array::~Array() {
     size = 0;
 }
 
-Array::Array(const Array &other) : size(other.size) {
-    data = new int[size];
+Array::Array(const Array &other) : data(nullptr), size(other.size) {
+    if (size > 0) {
+        data = new int[size];
 
-    for (int i = 0; i < size; i++) {
-        data[i] = other.data[i];
+        for (int i = 0; i < size; i++) {
+            data[i] = other.data[i];
+        }
     }
 }
 
@@ -63,7 +65,7 @@ Array &Array::operator=(Array &&move) noexcept {
 }
 
 Array &Array::operator++() {
-    int *new_data = new int[size + 1];
+    auto *new_data = new int[size + 1];
 
     for (int i = 0; i < size; i++) {
         new_data[i] = data[i];
@@ -78,10 +80,10 @@ Array &Array::operator++() {
     return *this;
 }
 
-Array Array::operator++(int value) {
+Array Array::operator++([[maybe_unused]] int value) {
     Array temp = *this;
 
-    int *new_data = new int[size + 1];
+    auto *new_data = new int[size + 1];
 
     for (int i = 0; i < size; i++) {
         new_data[i] = data[i];

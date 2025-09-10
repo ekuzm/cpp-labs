@@ -8,7 +8,7 @@ class Program {
     void useDefaultArrayConstructor();
     void useParameterizedArrayConstructor();
     void inputArray();
-    void showArray();
+    void showArray() const;
     void incrementArray();
 
   public:

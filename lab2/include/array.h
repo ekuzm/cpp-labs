@@ -6,7 +6,7 @@ class Array {
 
   public:
     Array();
-    Array(int arr_size);
+    explicit Array(int arr_size);
     ~Array();
     Array(const Array &other);
     Array(Array &&move) noexcept;
