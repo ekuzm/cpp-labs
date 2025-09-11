@@ -8,6 +8,13 @@ Array::Array() : data(nullptr), size(0) {
 
 Array::Array(int arr_size) : size(arr_size) {
     data = new int[size];
+
+    std ::cout << "Please enter array elements.\n";
+
+    for (int i = 0; i < size; i++) {
+        std ::cout << "Element " << i + 1 << ">> ";
+        data[i] = getNumber("");
+    }
 }
 
 Array::~Array() {
@@ -103,19 +110,18 @@ bool Array::isEmpty() const {
 }
 
 void input(Array &arr, const char *msg) {
-    if (arr.isEmpty()) {
-        while (true) {
-            arr.size = getNumber("Please enter array size: ");
-            if (arr.size <= 0) {
-                std::cout << kRedColor << "Error, size < 0, please try again." << kWhiteColor << std::endl;
-            } else {
-                break;
-            }
+    while (true) {
+        arr.size = getNumber("Please enter array size: ");
+        if (arr.size <= 0) {
+            std::cout << kRedColor << "Error, size < 0, please try again." << kWhiteColor << std::endl;
+        } else {
+            break;
         }
-        arr.data = new int[arr.size];
     }
 
     std::cout << msg;
+
+    arr.data = new int[arr.size];
 
     for (int i = 0; i < arr.size; i++) {
         std ::cout << "Element " << i + 1 << ">> ";

@@ -45,7 +45,7 @@ Program::Program() {
 }
 
 void Program::inputArray() {
-    input(arr, "Please enter array elements.\n");
+    input(arr, "Please enter or re-enter array elements.\n");
 
     std::cout << kGreenColor << "Array successfully entered using friend function(input)!" << kWhiteColor << std::endl;
 }
