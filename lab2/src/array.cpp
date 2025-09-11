@@ -140,6 +140,6 @@ void show(Array arr, const char *msg) {
 }
 
 void increment(Array &arr, int num) {
-    arr++;
+    ++arr;
     arr.data[arr.size - 1] = num;
 }
