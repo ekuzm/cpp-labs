@@ -1,7 +1,7 @@
 #include "menus.h"
 #include <iostream>
 
-void showCargoTaskMenu() {
+void showTaskMenu() {
     std::cout << "\n\t\t\t\tTASK" << std::endl;
     std::cout << "Create an abstract base class 'CargoCarrier' and derived classes 'Airplane', 'Train', 'Car'."
               << std::endl;
