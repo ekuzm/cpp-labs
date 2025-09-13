@@ -56,7 +56,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=ekuzm_cpp-labs_lab1
+            -Dsonar.projectKey=ekuzm_cpp-lab1
             -Dsonar.organization=${{ env.SONAR_ORG }}
             -Dsonar.sources=lab1
             -Dsonar.cfamily.compile-commands=build_wrapper_lab1/compile_commands.json
@@ -67,7 +67,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=ekuzm_cpp-labs_lab2
+            -Dsonar.projectKey=ekuzm_cpp-lab2
             -Dsonar.organization=${{ env.SONAR_ORG }}
             -Dsonar.sources=lab2
             -Dsonar.cfamily.compile-commands=build_wrapper_lab2/compile_commands.json
@@ -78,7 +78,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=ekuzm_cpp-labs_lab3
+            -Dsonar.projectKey=ekuzm_cpp-lab3
             -Dsonar.organization=${{ env.SONAR_ORG }}
             -Dsonar.sources=lab3
             -Dsonar.cfamily.compile-commands=build_wrapper_lab3/compile_commands.json
@@ -89,7 +89,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=ekuzm_cpp-labs_lab4
+            -Dsonar.projectKey=ekuzm_cpp-lab4
             -Dsonar.organization=${{ env.SONAR_ORG }}
             -Dsonar.sources=lab4
             -Dsonar.cfamily.compile-commands=build_wrapper_lab4/compile_commands.json
