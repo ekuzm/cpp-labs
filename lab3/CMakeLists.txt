@@ -10,6 +10,7 @@ set(SOURCES
     src/car.cpp
     src/train.cpp
     src/airplane.cpp
+    src/program.cpp
 )
 
 set(HEADERS
@@ -17,6 +18,7 @@ set(HEADERS
     include/car.h
     include/train.h
     include/airplane.h
+    include/program.h
 )
 
 add_executable(lab3 ${SOURCES} ${HEADERS})
