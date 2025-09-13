@@ -11,6 +11,8 @@ set(SOURCES
     src/train.cpp
     src/airplane.cpp
     src/utils.cpp
+    src/program.cpp
+    src/menus.cpp
 )
 
 set(HEADERS
@@ -19,6 +21,8 @@ set(HEADERS
     include/train.h
     include/airplane.h
     include/utils.h
+    include/program.h
+    include/menus.h
 )
 
 add_executable(lab4 ${SOURCES})
