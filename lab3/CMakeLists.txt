@@ -13,10 +13,10 @@ set(SOURCES
 )
 
 set(HEADERS
-    src/passenger_carrier.h
-    src/car.h
-    src/train.h
-    src/airplane.h
+    include/passenger_carrier.h
+    include/car.h
+    include/train.h
+    include/airplane.h
 )
 
 add_executable(lab3 ${SOURCES} ${HEADERS})
