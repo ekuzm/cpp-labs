@@ -113,7 +113,7 @@ bool Array::isEmpty() const {
     return (data == nullptr && size == 0);
 }
 
-void input(Array &arr, const char *msg) {
+void input(Array &arr, const std::string &msg) {
     while (true) {
         arr.size = getNumber("Please enter array size: ");
         if (arr.size <= 0) {
@@ -133,7 +133,7 @@ void input(Array &arr, const char *msg) {
     }
 }
 
-void show(Array arr, const char *msg) {
+void show(Array arr, const std::string &msg) {
     std::cout << msg;
 
     for (int i = 0; i < arr.size; i++) {

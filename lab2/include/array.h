@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 class Array {
     int *data;
     int size;
@@ -16,7 +18,7 @@ class Array {
     Array operator++(int value);
 
     bool isEmpty() const;
-    friend void input(Array &arr, const char *msg);
-    friend void show(Array arr, const char *msg);
+    friend void input(Array &arr, const std::string &msg);
+    friend void show(Array arr, const std::string &msg);
     friend void increment(Array &arr, int num);
 };

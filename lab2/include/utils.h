@@ -1,3 +1,5 @@
 #pragma once
 
-int getNumber(const char *msg);
+#include <iostream>
+
+int getNumber(const std::string &msg);

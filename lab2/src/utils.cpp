@@ -2,7 +2,7 @@
 #include "consts.h"
 #include <iostream>
 
-int getNumber(const char *msg) {
+int getNumber(const std::string &msg) {
     int num = 0;
 
     std::cout << msg;
