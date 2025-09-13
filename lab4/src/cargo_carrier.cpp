@@ -29,3 +29,7 @@ double CargoCarrier::calculateCost() const {
 double CargoCarrier::calculateTime() const {
     return distance / speedKmH;
 }
+
+std::string CargoCarrier::getCity() const {
+    return city;
+}
