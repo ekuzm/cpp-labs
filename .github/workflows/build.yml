@@ -68,4 +68,28 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=ekuzm_cpp-labs_lab2
-            -Dsonar.organization=${{ env
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.sources=lab2
+            -Dsonar.cfamily.compile-commands=build_wrapper_lab2/compile_commands.json
+
+      - name: SonarCloud scan lab3
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=ekuzm_cpp-labs_lab3
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.sources=lab3
+            -Dsonar.cfamily.compile-commands=build_wrapper_lab3/compile_commands.json
+
+      - name: SonarCloud scan lab4
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=ekuzm_cpp-labs_lab4
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.sources=lab4
+            -Dsonar.cfamily.compile-commands=build_wrapper_lab4/compile_commands.json
