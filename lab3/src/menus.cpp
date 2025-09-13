@@ -12,7 +12,7 @@ void showTaskMenu() {
     std::cout << "3. Exit the program." << std::endl;
 }
 
-void showCarrierMenu() {
+void showCarriersMenu() {
     std::cout << "\n\t\t\t\tSELECT CARRIER TYPE" << std::endl;
     std::cout << "1. Car" << std::endl;
     std::cout << "2. Train" << std::endl;
