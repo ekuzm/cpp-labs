@@ -6,7 +6,7 @@
 
 template <typename T>
 
-T getNumber(const std::string msg, T min, T max) {
+T getNumber(const std::string &msg, T min, T max) {
     T num;
     int sym = 0;
 

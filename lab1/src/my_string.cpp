@@ -8,6 +8,12 @@ String::String() : data(nullptr), len(0), cap(0) {
 }
 
 String::String(char *&str) : len(myStrlen(str)), cap(len + 1) {
+    if (str == nullptr) {
+        len = 0;
+        cap = 1;
+        return;
+    }
+
     data = new char[cap];
 
     for (int i = 0; i < len; i++) {
