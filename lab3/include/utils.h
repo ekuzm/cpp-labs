@@ -14,8 +14,9 @@ T getNumber(const char *msg, T min, T max) {
 
     while (true) {
         if (std::cin.peek() != '\n' && std::cin.peek() != ' ' && (std::cin >> num).good()) {
-            sym = std::cin.get();
+            sym = std::cin.peek();
             if (((char)sym == '\n' || (char)sym == EOF) && num >= min && num <= max) {
+                std::cin.get();
                 return num;
             }
         }

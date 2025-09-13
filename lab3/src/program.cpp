@@ -77,7 +77,7 @@ void Program::showInfo() const {
         std::cout << std::endl;
     }
 
-    std::cout << kGreenColor << "\nYou have successfully showed all info about carriers!" << kWhiteColor << std::endl;
+    std::cout << kGreenColor << "You have successfully showed all info about carriers!" << kWhiteColor << std::endl;
 }
 
 void Program::removeCarriers() {
