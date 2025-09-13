@@ -1,4 +1,4 @@
-name: Build & SonarCloud
+name: Build & SonarCloud (per-lab)
 
 on:
   push:
@@ -23,7 +23,6 @@ jobs:
       - name: Install Build Wrapper
         uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
 
-      # Сборка lab1
       - name: Build lab1
         run: |
           rm -rf build
@@ -31,7 +30,17 @@ jobs:
           cmake -S lab1 -B build
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build --config Release
 
-      # Сборка lab2
+      - name: SonarCloud scan lab1
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=ekuzm_cpp-labs_lab1
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.sources=lab1
+            -Dsonar.cfamily.compile-commands=${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json
+
       - name: Build lab2
         run: |
           rm -rf build
@@ -39,7 +48,17 @@ jobs:
           cmake -S lab2 -B build
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build --config Release
 
-      # Сборка lab3
+      - name: SonarCloud scan lab2
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=ekuzm_cpp-labs_lab2
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.sources=lab2
+            -Dsonar.cfamily.compile-commands=${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json
+
       - name: Build lab3
         run: |
           rm -rf build
@@ -47,7 +66,17 @@ jobs:
           cmake -S lab3 -B build
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build --config Release
 
-      # Сборка lab4
+      - name: SonarCloud scan lab3
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=ekuzm_cpp-labs_lab3
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.sources=lab3
+            -Dsonar.cfamily.compile-commands=${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json
+
       - name: Build lab4
         run: |
           rm -rf build
@@ -55,14 +84,13 @@ jobs:
           cmake -S lab4 -B build
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build --config Release
 
-      # Анализ SonarCloud
-      - name: SonarCloud scan
+      - name: SonarCloud scan lab4
         uses: SonarSource/sonarqube-scan-action@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=ekuzm_cpp-labs2
+            -Dsonar.projectKey=ekuzm_cpp-labs_lab4
             -Dsonar.organization=${{ env.SONAR_ORG }}
-            -Dsonar.sources=lab1,lab2,lab3,lab4
+            -Dsonar.sources=lab4
             -Dsonar.cfamily.compile-commands=${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json
