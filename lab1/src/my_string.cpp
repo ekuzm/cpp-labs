@@ -14,7 +14,9 @@ String::String(char *&str) : len(myStrlen(str)), cap(len + 1) {
         data[i] = str[i];
     }
 
-    data[len] = '\0';
+    if (cap > len) {
+        data[len] = '\0';
+    }
     delete[] str;
     str = nullptr;
 }
