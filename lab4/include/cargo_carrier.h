@@ -8,14 +8,11 @@ class CargoCarrier {
     double distance;
     std::string city;
 
-    double calculateCost() const;
-    double calculateTime() const;
-
   protected:
-    virtual const char *getSound() const = 0;
+    virtual std::string getSound() const = 0;
     CargoCarrier();
 
-    explicit CargoCarrier(double cost, double speed, double travelDistance);
+    explicit CargoCarrier(double cost, double speed, double travelDistance, std::string cityName);
 
   public:
     virtual ~CargoCarrier();
@@ -24,5 +21,6 @@ class CargoCarrier {
     CargoCarrier &operator=(const CargoCarrier &other);
     CargoCarrier(CargoCarrier &&move) noexcept;
     CargoCarrier &operator=(CargoCarrier &&move) noexcept;
-    void printInfo() const;
+    double calculateCost() const;
+    double calculateTime() const;
 };
