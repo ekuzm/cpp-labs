@@ -12,6 +12,7 @@ set(SOURCES
     src/airplane.cpp
     src/program.cpp
     src/menus.cpp
+    src/utils.cpp
 )
 
 set(HEADERS

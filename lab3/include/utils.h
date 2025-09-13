@@ -1,11 +1,12 @@
 #pragma once
 
 #include "consts.h"
+#include "passenger_carrier.h"
 #include <iostream>
 
 template <typename T>
 
-T getNumber(const char *msg, T min, T max) {
+T getNumber(const std::string msg, T min, T max) {
     T num;
     int sym = 0;
 
@@ -27,3 +28,5 @@ T getNumber(const char *msg, T min, T max) {
         std::cout << kRedColor << "\nError, invalid input. Please try again: " << kWhiteColor;
     }
 }
+
+void printInfo(const PassengerCarrier &carrier);

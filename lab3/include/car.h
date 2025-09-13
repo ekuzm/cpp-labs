@@ -4,7 +4,7 @@
 
 class Car : public PassengerCarrier {
   public:
-    const char *getSound() const override;
+    std::string getSound() const override;
 
     Car();
 };

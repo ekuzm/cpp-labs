@@ -3,7 +3,7 @@
 #include "utils.h"
 #include <iostream>
 
-const char *Airplane::getSound() const {
+std::string Airplane::getSound() const {
     return kAirplaneSound;
 }
 

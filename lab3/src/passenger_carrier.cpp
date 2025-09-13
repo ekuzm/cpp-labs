@@ -22,22 +22,14 @@ PassengerCarrier &PassengerCarrier::operator=(const PassengerCarrier &other) = d
 
 PassengerCarrier &PassengerCarrier::operator=(PassengerCarrier &&move) noexcept = default;
 
-const char *PassengerCarrier::getSound() const {
+std::string PassengerCarrier::getSound() const {
     return "NONE";
 }
 
 double PassengerCarrier::calculateCost() const {
-    return distance / costPrKm;
+    return distance * costPrKm;
 }
 
 double PassengerCarrier::calculateTime() const {
     return distance / speedKmH;
-}
-
-void PassengerCarrier::printInfo() const {
-    double cost = calculateCost();
-    double time = calculateTime();
-
-    std::cout << getSound() << " The cost(in BYN) per distance travelled is " << cost << std::endl;
-    std::cout << getSound() << " The time(in Hours) per distance travelled is " << time << std::endl;
 }

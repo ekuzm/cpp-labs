@@ -1,10 +1,11 @@
 #pragma once
 
 #include "passenger_carrier.h"
+#include <iostream>
 
 class Airplane : public PassengerCarrier {
   public:
-    const char *getSound() const override;
+    std::string getSound() const override;
 
     Airplane();
 };

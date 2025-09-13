@@ -73,7 +73,7 @@ void Program::showInfo() const {
     std::cout << "\n\t\t\t\tINFO" << std::endl;
 
     for (int i = 0; i < size; i++) {
-        carriers[i]->printInfo();
+        printInfo(*carriers[i]);
         std::cout << std::endl;
     }
 

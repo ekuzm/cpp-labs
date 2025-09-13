@@ -1,8 +1,10 @@
 #pragma once
 
-inline constexpr const char *kCarSound = "BIP BIP!";
-inline constexpr const char *kTrainSound = "CHOOH CHOOH!";
-inline constexpr const char *kAirplaneSound = "WHOOOSH!";
+#include <iostream>
+
+inline const std::string kCarSound = "BIP BIP!";
+inline const std::string kTrainSound = "CHOOH CHOOH!";
+inline const std::string kAirplaneSound = "WHOOOSH!";
 
 inline constexpr const double kCarMinCostPrKm = 0.1;
 inline constexpr const double kCarMaxCostPrKm = 5.0;
@@ -25,6 +27,6 @@ inline constexpr const double kAirplaneMaxSpeedKmH = 1200.0;
 inline constexpr const double kAirplaneMinDistanceKm = 100.0;
 inline constexpr const double kAirplaneMaxDistanceKm = 10000.0;
 
-inline constexpr const char *kWhiteColor = "\o{33}[0m";
-inline constexpr const char *kRedColor = "\o{33}[31m";
-inline constexpr const char *kGreenColor = "\o{33}[32m";
+inline const std::string kWhiteColor = "\o{33}[0m";
+inline const std::string kRedColor = "\o{33}[31m";
+inline const std::string kGreenColor = "\o{33}[32m";

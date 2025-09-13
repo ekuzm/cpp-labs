@@ -3,7 +3,7 @@
 #include "utils.h"
 #include <iostream>
 
-const char *Car::getSound() const {
+std::string Car::getSound() const {
     return kCarSound;
 }
 
