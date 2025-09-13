@@ -30,3 +30,5 @@ T getNumber(const std::string &msg, T min, T max) {
 }
 
 std::string getString(const std::string &msg);
+
+void printInfo(const CargoCarrier &carrier);
