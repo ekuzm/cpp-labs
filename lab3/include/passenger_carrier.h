@@ -1,10 +1,22 @@
 #pragma once
 
 class PassengerCarrier {
-  protected:
-    int costPrKm;
-    int speedKmH;
+    double costPrKm;
+    double speedKmH;
 
-    virtual void calculateCost();
-    virtual void calculateTime();
+  protected:
+    virtual double calculateCost(double distance);
+    virtual double calculateTime(double distance);
+
+    PassengerCarrier();
+
+    explicit PassengerCarrier(double cost, double speed);
+
+  public:
+    virtual ~PassengerCarrier();
+
+    PassengerCarrier(const PassengerCarrier &other);
+    PassengerCarrier &operator=(const PassengerCarrier &other);
+    PassengerCarrier(PassengerCarrier &&move) noexcept;
+    PassengerCarrier &operator=(PassengerCarrier &&move) noexcept;
 };
