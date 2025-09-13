@@ -34,7 +34,7 @@ jobs:
       - name: SonarCloud scan — lab1
         uses: SonarSource/sonarqube-scan-action@v4
         env:
-          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
             -Dsonar.projectKey=ekuzm_cpp-labs_lab1
@@ -46,7 +46,7 @@ jobs:
       - name: SonarCloud scan — lab2
         uses: SonarSource/sonarqube-scan-action@v4
         env:
-          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
             -Dsonar.projectKey=ekuzm_cpp-labs_lab2
@@ -58,7 +58,7 @@ jobs:
       - name: SonarCloud scan — lab3
         uses: SonarSource/sonarqube-scan-action@v4
         env:
-          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
             -Dsonar.projectKey=ekuzm_cpp-labs_lab3
@@ -70,7 +70,7 @@ jobs:
       - name: SonarCloud scan — lab4
         uses: SonarSource/sonarqube-scan-action@v4
         env:
-          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
             -Dsonar.projectKey=ekuzm_cpp-labs_lab4
