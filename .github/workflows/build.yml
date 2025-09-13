@@ -49,6 +49,7 @@ jobs:
           mkdir build_lab4
           cmake -S lab4 -B build_lab4 -DCMAKE_CXX_FLAGS="--coverage"
           build-wrapper-linux-x86-64 --out-dir build_wrapper_lab4 cmake --build build_lab4 --config Release
+
       - name: SonarCloud scan lab1
         uses: SonarSource/sonarqube-scan-action@v4
         env:
@@ -59,6 +60,7 @@ jobs:
             -Dsonar.organization=${{ env.SONAR_ORG }}
             -Dsonar.sources=lab1
             -Dsonar.cfamily.compile-commands=build_wrapper_lab1/compile_commands.json
+
       - name: SonarCloud scan lab2
         uses: SonarSource/sonarqube-scan-action@v4
         env:
@@ -66,27 +68,4 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=ekuzm_cpp-labs_lab2
-            -Dsonar.organization=${{ env.SONAR_ORG }}
-            -Dsonar.sources=lab2
-            -Dsonar.cfamily.compile-commands=build_wrapper_lab1/compile_commands.json
-       - name: SonarCloud scan lab3
-        uses: SonarSource/sonarqube-scan-action@v4
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectKey=ekuzm_cpp-labs_lab3
-            -Dsonar.organization=${{ env.SONAR_ORG }}
-            -Dsonar.sources=lab3
-            -Dsonar.cfamily.compile-commands=build_wrapper_lab1/compile_commands.json
-      - name: SonarCloud scan lab4
-        uses: SonarSource/sonarqube-scan-action@v4
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectKey=ekuzm_cpp-labs_lab4
-            -Dsonar.organization=${{ env.SONAR_ORG }}
-            -Dsonar.sources=lab4
-            -Dsonar.cfamily.compile-commands=build_wrapper_lab1/compile_commands.json
-      
+            -Dsonar.organization=${{ env
