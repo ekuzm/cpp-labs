@@ -5,4 +5,6 @@
 class Airplane : public PassengerCarrier {
   public:
     const char *getSound() const override;
+
+    Airplane();
 };

@@ -3,16 +3,16 @@
 class PassengerCarrier {
     double costPrKm;
     double speedKmH;
+    double distance;
 
-    double calculateCost(double distance) const;
-    double calculateTime(double distance) const;
+    double calculateCost() const;
+    double calculateTime() const;
 
   protected:
     virtual const char *getSound() const;
-
     PassengerCarrier();
 
-    explicit PassengerCarrier(double cost, double speed);
+    explicit PassengerCarrier(double cost, double speed, double travelDistance);
 
   public:
     virtual ~PassengerCarrier();
@@ -21,5 +21,5 @@ class PassengerCarrier {
     PassengerCarrier &operator=(const PassengerCarrier &other);
     PassengerCarrier(PassengerCarrier &&move) noexcept;
     PassengerCarrier &operator=(PassengerCarrier &&move) noexcept;
-    void printInfo(double distance);
+    void printInfo();
 };

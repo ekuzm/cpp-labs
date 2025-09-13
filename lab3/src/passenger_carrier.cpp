@@ -1,10 +1,11 @@
 #include "passenger_carrier.h"
 #include <iostream>
 
-PassengerCarrier::PassengerCarrier() : costPrKm(0.0), speedKmH(0.0) {
+PassengerCarrier::PassengerCarrier() : costPrKm(0.0), speedKmH(0.0), distance(0.0) {
 }
 
-PassengerCarrier::PassengerCarrier(double cost, double speed) : costPrKm(cost), speedKmH(speed) {
+PassengerCarrier::PassengerCarrier(double cost, double speed, double travelDistance)
+    : costPrKm(cost), speedKmH(speed), distance(travelDistance) {
 }
 
 PassengerCarrier::~PassengerCarrier() = default;
@@ -21,20 +22,18 @@ const char *PassengerCarrier::getSound() const {
     return "NONE";
 }
 
-double PassengerCarrier::calculateCost(double distance) const {
-    return distance / speedKmH;
-}
-
-double PassengerCarrier::calculateTime(double distance) const {
+double PassengerCarrier::calculateCost() const {
     return distance / costPrKm;
 }
 
-void PassengerCarrier::printInfo(double distance) {
-    double cost = calculateCost(distance);
-    double time = calculateTime(distance);
+double PassengerCarrier::calculateTime() const {
+    return distance / speedKmH;
+}
 
-    std::cout << getSound() << std::endl;
+void PassengerCarrier::printInfo() {
+    double cost = calculateCost();
+    double time = calculateTime();
 
-    std::cout << "The cost(in BYN) per distance travelled is " << cost << std::endl;
-    std::cout << getSound() << "The time(in Hours) per distance travelled is " << time << std::endl;
+    std::cout << getSound() << " The cost(in BYN) per distance travelled is " << cost << std::endl;
+    std::cout << getSound() << " The time(in Hours) per distance travelled is " << time << std::endl;
 }
