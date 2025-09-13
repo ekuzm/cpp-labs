@@ -21,5 +21,5 @@ class PassengerCarrier {
     PassengerCarrier &operator=(const PassengerCarrier &other);
     PassengerCarrier(PassengerCarrier &&move) noexcept;
     PassengerCarrier &operator=(PassengerCarrier &&move) noexcept;
-    void printInfo();
+    void printInfo() const;
 };

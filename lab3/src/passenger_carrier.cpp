@@ -8,8 +8,7 @@ PassengerCarrier::PassengerCarrier(double cost, double speed, double travelDista
     : costPrKm(cost), speedKmH(speed), distance(travelDistance) {
 }
 
-PassengerCarrier::~PassengerCarrier() {
-}
+PassengerCarrier::~PassengerCarrier() = default;
 
 PassengerCarrier::PassengerCarrier(const PassengerCarrier &other) = default;
 
@@ -31,7 +30,7 @@ double PassengerCarrier::calculateTime() const {
     return distance / speedKmH;
 }
 
-void PassengerCarrier::printInfo() {
+void PassengerCarrier::printInfo() const {
     double cost = calculateCost();
     double time = calculateTime();
 
