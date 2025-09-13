@@ -4,6 +4,5 @@
 
 class Airplane : public PassengerCarrier {
   public:
-    double calculateCost(double distance) override;
-    double calculateTime(double distance) override;
+    const char *getSound() const override;
 };
