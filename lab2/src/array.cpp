@@ -88,6 +88,10 @@ Array &Array::operator++() {
 }
 
 Array Array::operator++([[maybe_unused]] int value) {
+    if (size < 0) {
+        size = 0;
+    }
+
     Array temp = *this;
 
     auto *new_data = new int[size + 1];
@@ -141,5 +145,7 @@ void show(Array arr, const char *msg) {
 
 void increment(Array &arr, int num) {
     ++arr;
-    arr.data[arr.size - 1] = num;
+    if (arr.size > 0) {
+        arr.data[arr.size - 1] = num;
+    }
 }

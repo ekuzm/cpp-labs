@@ -10,7 +10,7 @@ class Program {
     void addCarrier();
     void chooseCarrier();
     void expandCarries();
-    void showInfo();
+    void showInfo() const;
     void removeCarriers();
 
   public:

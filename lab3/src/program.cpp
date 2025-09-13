@@ -18,6 +18,10 @@ void Program::addCarrier() {
 }
 
 void Program::expandCarries() {
+    if (size < 0) {
+        size = 0;
+    }
+
     if (size + 1 == cap) {
         cap *= 2;
         auto **new_carriers = new PassengerCarrier *[cap];
@@ -30,14 +34,12 @@ void Program::expandCarries() {
 
         carriers = new_carriers;
     }
+
     size++;
 }
 
 void Program::chooseCarrier() {
     int opt = 0;
-    double cost = 0.0;
-    double speed = 0.0;
-    double distance = 0.0;
 
     showCarriersMenu();
 
@@ -61,7 +63,7 @@ void Program::chooseCarrier() {
     }
 }
 
-void Program::showInfo() {
+void Program::showInfo() const {
     if (size == 0) {
         std::cout << kRedColor << "\nError, you have not added any carriers yet. Please use option 1 to add a carrier."
                   << kWhiteColor << std::endl;
