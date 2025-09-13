@@ -11,7 +11,6 @@ jobs:
   build-and-scan:
     runs-on: ubuntu-latest
     env:
-      BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory
       SONAR_ORG: ekuzm
 
     steps:
@@ -23,39 +22,34 @@ jobs:
       - name: Install Build Wrapper
         uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
 
-      # Сборка lab1
       - name: Build lab1
         run: |
-          rm -rf build
-          mkdir build
-          cmake -S lab1 -B build
-          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build --config Release
+          rm -rf build_lab1
+          mkdir build_lab1
+          cmake -S lab1 -B build_lab1 -DCMAKE_CXX_FLAGS="--coverage"
+          build-wrapper-linux-x86-64 --out-dir build_wrapper_lab1 cmake --build build_lab1 --config Release
 
-      # Сборка lab2
       - name: Build lab2
         run: |
-          rm -rf build
-          mkdir build
-          cmake -S lab2 -B build
-          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build --config Release
+          rm -rf build_lab2
+          mkdir build_lab2
+          cmake -S lab2 -B build_lab2 -DCMAKE_CXX_FLAGS="--coverage"
+          build-wrapper-linux-x86-64 --out-dir build_wrapper_lab2 cmake --build build_lab2 --config Release
 
-      # Сборка lab3
       - name: Build lab3
         run: |
-          rm -rf build
-          mkdir build
-          cmake -S lab3 -B build
-          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build --config Release
+          rm -rf build_lab3
+          mkdir build_lab3
+          cmake -S lab3 -B build_lab3 -DCMAKE_CXX_FLAGS="--coverage"
+          build-wrapper-linux-x86-64 --out-dir build_wrapper_lab3 cmake --build build_lab3 --config Release
 
-      # Сборка lab4
       - name: Build lab4
         run: |
-          rm -rf build
-          mkdir build
-          cmake -S lab4 -B build
-          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build --config Release
+          rm -rf build_lab4
+          mkdir build_lab4
+          cmake -S lab4 -B build_lab4 -DCMAKE_CXX_FLAGS="--coverage"
+          build-wrapper-linux-x86-64 --out-dir build_wrapper_lab4 cmake --build build_lab4 --config Release
 
-      # Анализ SonarCloud
       - name: SonarCloud scan
         uses: SonarSource/sonarqube-scan-action@v4
         env:
@@ -64,4 +58,5 @@ jobs:
           args: >
             -Dsonar.projectKey=ekuzm_cpp-labs2
             -Dsonar.organization=${{ env.SONAR_ORG }}
-            -Dsonar.cfamily.compile-commands=${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json
+            -Dsonar.cfamily.compile-commands=build_wrapper_lab1/compile_commands.json,build_wrapper_lab2/compile_commands.json,build_wrapper_lab3/compile_commands.json,build_wrapper_lab4/compile_commands.json
+            -Dsonar.cfamily.gcov.reportsPath=build_lab1,build_lab2,build_lab3,build_lab4
