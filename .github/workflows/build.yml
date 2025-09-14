@@ -39,3 +39,6 @@ jobs:
             -Dsonar.projectName=ekuzm.cpp-${{ matrix.project }}
             -Dsonar.sources=${{ matrix.project }}
             -Dsonar.cfamily.compile-commands=bw-output-${{ matrix.project }}/compile_commands.json
+            -Dsonar.projectVersion=1.0
+            -Dsonar.branch.name=main
+            -Dsonar.projectCreation.automatic=true
