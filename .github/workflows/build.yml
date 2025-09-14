@@ -11,11 +11,11 @@ jobs:
   build-and-scan:
     runs-on: ubuntu-latest
     env:
+      BUILD_WRAPPER_DIR: build_wrapper_output 
       SONAR_ORG: ekuzm
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
+      SONAR_PROJECT_KEY: ekuzm_cpp-labs
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -23,23 +23,27 @@ jobs:
       - name: Install Build Wrapper
         uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
 
-      - name: Build all labs
+      - name: Install Sonar Scanner
+        uses: SonarSource/sonarqube-scan-action/install-sonar-scanner@v4
+
+      - name: Build labs with coverage
         run: |
           for lab in lab1 lab2 lab3 lab4; do
-            echo "Building ${lab}"
-            rm -rf ${lab}/build
-            mkdir ${lab}/build
-            cmake -S ${lab} -B ${lab}/build -DCMAKE_CXX_FLAGS="--coverage"
-            build-wrapper-linux-x86-64 --out-dir ${lab}/build_wrapper cmake --build ${lab}/build --config Release
+            echo "Building $lab"
+            rm -rf $lab/build
+            mkdir -p $lab/build
+            cmake -S $lab -B $lab/build -DCMAKE_CXX_FLAGS="--coverage"
+            build-wrapper-linux-x86-64 --out-dir $BUILD_WRAPPER_DIR/$lab cmake --build $lab/build --config Release
           done
 
-      - name: SonarCloud scan
+      - name: Run SonarCloud scan
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
         run: |
-          for lab in lab1 lab2 lab3 lab4; do
-            echo "Scanning ${lab}"
-            sonar-scanner \
-              -Dsonar.projectKey=ekuzm_cpp-${lab} \
-              -Dsonar.organization=${{ env.SONAR_ORG }} \
-              -Dsonar.sources=${lab} \
-              -Dsonar.cfamily.compile-commands=${lab}/build_wrapper/compile_commands.json
-          done
+          sonar-scanner \
+            -Dsonar.organization=$SONAR_ORG \
+            -Dsonar.projectKey=$SONAR_PROJECT_KEY \
+            -Dsonar.sources=lab1,lab2,lab3,lab4 \
+            -Dsonar.cfamily.compile-commands=$BUILD_WRAPPER_DIR/compile_commands.json \
+            -Dsonar.cfamily.gcov.reportsPath=lab1/build,lab2/build,lab3/build,lab4/build
