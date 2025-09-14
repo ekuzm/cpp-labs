@@ -1,32 +1,41 @@
-name: Build
+name: Build and SonarQube Analysis
 on:
   push:
     branches:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
-  build:
-    name: Build
+  sonarcloud:
+    name: SonarQube Analysis
     runs-on: ubuntu-latest
-    env:
-      BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
+    strategy:
+      matrix:
+        project: [lab1, lab2, lab3, lab4]
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0
+      
       - name: Install Build Wrapper
         uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
-      - name: Run Build Wrapper
+      
+      - name: Configure and Build ${{ matrix.project }}
         run: |
-          rm -rf build
-          mkdir build
-          cmake -S . -B build
-          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build/ --config Release
-      - name: SonarQube Scan
+          mkdir build-${{ matrix.project }}
+          cd build-${{ matrix.project }}
+          cmake ../${{ matrix.project }}
+          build-wrapper-linux-x86-64 --out-dir ../bw-output-${{ matrix.project }} make
+      
+      - name: SonarQube Scan for ${{ matrix.project }}
         uses: SonarSource/sonarqube-scan-action@v4
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # Put the name of your token here
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            --define sonar.cfamily.compile-commands="${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json"
+            -Dsonar.projectKey=ekuzm_ekuzm.cpp-${{ matrix.project }}
+            -Dsonar.organization=ekuzm
+            -Dsonar.projectName=ekuzm.cpp-${{ matrix.project }}
+            -Dsonar.sources=${{ matrix.project }}
+            -Dsonar.cfamily.compile-commands=bw-output-${{ matrix.project }}/compile_commands.json
