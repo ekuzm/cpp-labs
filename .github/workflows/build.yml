@@ -13,8 +13,9 @@ jobs:
     env:
       SONAR_ORG: ekuzm
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -22,24 +23,23 @@ jobs:
       - name: Install Build Wrapper
         uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
 
-      - name: Build labs
+      - name: Build all labs
         run: |
           for lab in lab1 lab2 lab3 lab4; do
-            echo "Building lab$"
-            rm -rf lab$/build
-            mkdir lab$/build
-            cmake -S lab$ -B lab$/build -DCMAKE_CXX_FLAGS="--coverage"
-            build-wrapper-linux-x86-64 --out-dir lab$/build_wrapper cmake --build lab$/build --config Release
+            echo "Building ${lab}"
+            rm -rf ${lab}/build
+            mkdir ${lab}/build
+            cmake -S ${lab} -B ${lab}/build -DCMAKE_CXX_FLAGS="--coverage"
+            build-wrapper-linux-x86-64 --out-dir ${lab}/build_wrapper cmake --build ${lab}/build --config Release
           done
 
-      - name: SonarCloud scan labs
+      - name: SonarCloud scan
         run: |
           for lab in lab1 lab2 lab3 lab4; do
-            echo "Running SonarCloud scan for lab$"
+            echo "Scanning ${lab}"
             sonar-scanner \
-              -Dsonar.projectKey=ekuzm_cpp-{lab}$ \
+              -Dsonar.projectKey=ekuzm_cpp-${lab} \
               -Dsonar.organization=${{ env.SONAR_ORG }} \
-              -Dsonar.sources=lab$.src \
-              -Dsonar.cfamily.compile-commands=lab$/build_wrapper/compile_commands.json \
-              -Dsonar.cfamily.gcov.reportsPath=lab$/build
+              -Dsonar.sources=${lab} \
+              -Dsonar.cfamily.compile-commands=${lab}/build_wrapper/compile_commands.json
           done
