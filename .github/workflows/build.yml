@@ -23,6 +23,9 @@ jobs:
       - name: Install Build Wrapper
         uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
 
+      - name: Install Sonar Scanner
+        uses: SonarSource/sonarqube-scan-action/install-sonar-scanner@v4
+
       - name: Build all labs
         run: |
           for lab in lab1 lab2 lab3 lab4; do
@@ -42,4 +45,6 @@ jobs:
               -Dsonar.organization=${{ env.SONAR_ORG }} \
               -Dsonar.sources=${lab} \
               -Dsonar.cfamily.compile-commands=${lab}/build_wrapper/compile_commands.json
-          done
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
