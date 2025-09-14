@@ -23,31 +23,90 @@ jobs:
       - name: Install Build Wrapper
         uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
 
-      - name: Install gcovr
-        run: sudo apt-get update && sudo apt-get install -y gcovr lcov
-
-      - name: Build & Scan Labs
+      # --- Build, run and generate coverage for each lab ---
+      - name: Build, run, and collect coverage for lab1
         run: |
-          for lab in lab1 lab2 lab3 lab4; do
-            echo "=== Building ${lab} ==="
-            rm -rf ${lab}/build
-            mkdir ${lab}/build
-            cmake -S ${lab} -B ${lab}/build -DCMAKE_CXX_FLAGS="--coverage"
-            build-wrapper-linux-x86-64 --out-dir ${lab}/build_wrapper cmake --build ${lab}/build --config Release
+          rm -rf lab1/build lab1/build_wrapper
+          mkdir lab1/build
+          cmake -S lab1 -B lab1/build -DCMAKE_CXX_FLAGS="--coverage"
+          build-wrapper-linux-x86-64 --out-dir lab1/build_wrapper cmake --build lab1/build --config Release
+          # Run binary to generate .gcda files
+          ./lab1/build/lab1 || true
+          # Collect coverage info
+          lcov --capture --directory lab1/build --output-file lab1/coverage.info || true
 
-            echo "=== Running gcov coverage for ${lab} ==="
-            cd ${lab}/build
-            make clean || true
-            lcov --capture --directory . --output-file coverage.info
-            lcov --remove coverage.info '/usr/*' --output-file coverage.info
-            genhtml coverage.info --output-directory coverage_html
-            cd ../..
+      - name: Build, run, and collect coverage for lab2
+        run: |
+          rm -rf lab2/build lab2/build_wrapper
+          mkdir lab2/build
+          cmake -S lab2 -B lab2/build -DCMAKE_CXX_FLAGS="--coverage"
+          build-wrapper-linux-x86-64 --out-dir lab2/build_wrapper cmake --build lab2/build --config Release
+          ./lab2/build/lab2 || true
+          lcov --capture --directory lab2/build --output-file lab2/coverage.info || true
 
-            echo "=== Scanning ${lab} with SonarCloud ==="
-            sonar-scanner \
-              -Dsonar.projectKey=ekuzm_cpp-${lab} \
-              -Dsonar.organization=${{ env.SONAR_ORG }} \
-              -Dsonar.sources=${lab} \
-              -Dsonar.cfamily.compile-commands=${lab}/build_wrapper/compile_commands.json \
-              -Dsonar.cfamily.gcov.reportsPath=${lab}/build/coverage.info
-          done
+      - name: Build, run, and collect coverage for lab3
+        run: |
+          rm -rf lab3/build lab3/build_wrapper
+          mkdir lab3/build
+          cmake -S lab3 -B lab3/build -DCMAKE_CXX_FLAGS="--coverage"
+          build-wrapper-linux-x86-64 --out-dir lab3/build_wrapper cmake --build lab3/build --config Release
+          ./lab3/build/lab3 || true
+          lcov --capture --directory lab3/build --output-file lab3/coverage.info || true
+
+      - name: Build, run, and collect coverage for lab4
+        run: |
+          rm -rf lab4/build lab4/build_wrapper
+          mkdir lab4/build
+          cmake -S lab4 -B lab4/build -DCMAKE_CXX_FLAGS="--coverage"
+          build-wrapper-linux-x86-64 --out-dir lab4/build_wrapper cmake --build lab4/build --config Release
+          ./lab4/build/lab4 || true
+          lcov --capture --directory lab4/build --output-file lab4/coverage.info || true
+
+      # --- SonarCloud analysis ---
+      - name: SonarCloud scan lab1
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=ekuzm_cpp-lab1
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.sources=lab1
+            -Dsonar.cfamily.compile-commands=lab1/build_wrapper/compile_commands.json
+            -Dsonar.cfamily.gcov.reportsPath=lab1/coverage.info
+
+      - name: SonarCloud scan lab2
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=ekuzm_cpp-lab2
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.sources=lab2
+            -Dsonar.cfamily.compile-commands=lab2/build_wrapper/compile_commands.json
+            -Dsonar.cfamily.gcov.reportsPath=lab2/coverage.info
+
+      - name: SonarCloud scan lab3
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=ekuzm_cpp-lab3
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.sources=lab3
+            -Dsonar.cfamily.compile-commands=lab3/build_wrapper/compile_commands.json
+            -Dsonar.cfamily.gcov.reportsPath=lab3/coverage.info
+
+      - name: SonarCloud scan lab4
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=ekuzm_cpp-lab4
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.sources=lab4
+            -Dsonar.cfamily.compile-commands=lab4/build_wrapper/compile_commands.json
+            -Dsonar.cfamily.gcov.reportsPath=lab4/coverage.info
