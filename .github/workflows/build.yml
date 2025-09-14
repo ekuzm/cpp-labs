@@ -1,4 +1,5 @@
-name: Build and SonarQube Analysis
+name: Build & SonarCloud
+
 on:
   push:
     branches:
@@ -7,38 +8,38 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  sonarcloud:
-    name: SonarQube Analysis
+  build-and-scan:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        project: [lab1, lab2, lab3, lab4]
+    env:
+      SONAR_ORG: ekuzm
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
       - name: Install Build Wrapper
         uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
-      
-      - name: Configure and Build ${{ matrix.project }}
+
+      - name: Build labs
         run: |
-          mkdir build-${{ matrix.project }}
-          cd build-${{ matrix.project }}
-          cmake ../${{ matrix.project }}
-          build-wrapper-linux-x86-64 --out-dir ../bw-output-${{ matrix.project }} make
-      
-      - name: SonarQube Scan for ${{ matrix.project }}
-        uses: SonarSource/sonarqube-scan-action@v4
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectKey=ekuzm_ekuzm.cpp-${{ matrix.project }}
-            -Dsonar.organization=ekuzm
-            -Dsonar.projectName=ekuzm.cpp-${{ matrix.project }}
-            -Dsonar.sources=${{ matrix.project }}
-            -Dsonar.cfamily.compile-commands=bw-output-${{ matrix.project }}/compile_commands.json
-            -Dsonar.projectVersion=1.0
-            -Dsonar.branch.name=main
-            -Dsonar.projectCreation.automatic=true
+          for lab in lab1 lab2 lab3 lab4; do
+            echo "Building lab$"
+            rm -rf lab$/build
+            mkdir lab$/build
+            cmake -S lab$ -B lab$/build -DCMAKE_CXX_FLAGS="--coverage"
+            build-wrapper-linux-x86-64 --out-dir lab$/build_wrapper cmake --build lab$/build --config Release
+          done
+
+      - name: SonarCloud scan labs
+        run: |
+          for lab in lab1 lab2 lab3 lab4; do
+            echo "Running SonarCloud scan for lab$"
+            sonar-scanner \
+              -Dsonar.projectKey=ekuzm_cpp-{lab}$ \
+              -Dsonar.organization=${{ env.SONAR_ORG }} \
+              -Dsonar.sources=lab$.src \
+              -Dsonar.cfamily.compile-commands=lab$/build_wrapper/compile_commands.json \
+              -Dsonar.cfamily.gcov.reportsPath=lab$/build
+          done
