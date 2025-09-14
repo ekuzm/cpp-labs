@@ -2,7 +2,6 @@
 #include "consts.h"
 #include "menus.h"
 #include "utils.h"
-#include <iostream>
 
 void Program::useDefaultArrayConstructor() {
     Array tmp_arr;

@@ -5,4 +5,4 @@
 
 ## Отчет по данной лабораторная работе можно найти [здесь](lab1.pdf)
 
-## Ссылка на результат SonarQube Cloud [тут](https://sonarcloud.io/project/overview?id=ekuzm_cpp-labs2)
+## Ссылка на результат SonarQube Cloud [тут](https://sonarcloud.io/project/overview?id=ekuzm_cpp-lab1)

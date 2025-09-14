@@ -2,7 +2,6 @@
 
 #include "cargo_carrier.h"
 #include "consts.h"
-#include <iostream>
 
 template <typename T>
 

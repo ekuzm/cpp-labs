@@ -1,7 +1,6 @@
 #include "array.h"
 #include "consts.h"
 #include "utils.h"
-#include <iostream>
 
 Array::Array() : data(nullptr), size(0) {
 }

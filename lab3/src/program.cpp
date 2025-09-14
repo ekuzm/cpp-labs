@@ -5,7 +5,6 @@
 #include "menus.h"
 #include "train.h"
 #include "utils.h"
-#include <iostream>
 
 Program::Program() = default;
 

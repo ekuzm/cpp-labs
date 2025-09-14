@@ -1,7 +1,6 @@
 #include "car.h"
 #include "consts.h"
 #include "utils.h"
-#include <iostream>
 
 std::string Car::getSound() const {
     return kCarSound;

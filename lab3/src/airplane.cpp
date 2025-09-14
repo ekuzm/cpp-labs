@@ -1,7 +1,6 @@
 #include "airplane.h"
 #include "consts.h"
 #include "utils.h"
-#include <iostream>
 
 std::string Airplane::getSound() const {
     return kAirplaneSound;

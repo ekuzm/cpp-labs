@@ -1,5 +1,4 @@
 #include "passenger_carrier.h"
-#include <iostream>
 
 PassengerCarrier::PassengerCarrier() : costPrKm(0.0), speedKmH(0.0), distance(0.0) {
 }

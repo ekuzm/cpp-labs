@@ -16,7 +16,7 @@ void showTaskMenu() {
     std::cout << "Define friend functions for input and output operations." << std::endl;
 
     std::cout << "\n\t\t\t\tMENU" << std::endl;
-    std::cout << "1. Enter array elements." << std::endl;
+    std::cout << "1. Enter or re-enter array elements." << std::endl;
     std::cout << "2. Display the array." << std::endl;
     std::cout << "3. Increment array elements (++)." << std::endl;
     std::cout << "4. Exit the program." << std::endl;

@@ -2,7 +2,6 @@
 
 #include "consts.h"
 #include "passenger_carrier.h"
-#include <iostream>
 
 template <typename T>
 

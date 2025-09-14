@@ -1,6 +1,5 @@
 #include "utils.h"
 #include "consts.h"
-#include <iostream>
 
 int getNumber(const std::string &msg) {
     int num = 0;

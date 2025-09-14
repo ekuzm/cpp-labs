@@ -1,5 +1,4 @@
 #include "program.h"
-#include <iostream>
 
 int main() {
     Program program;
