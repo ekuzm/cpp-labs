@@ -19,11 +19,9 @@ jobs:
         uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
       - name: Run Build Wrapper
         run: |
-          cd lab1
-          rm -rf build
-          mkdir build
-          cmake -S . -B build
-          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build/ --config Release
+          mkdir build_lab1
+          cmake -S lab1 -B build_lab1
+          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build_lab1/ --config Release
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v4
         env:
