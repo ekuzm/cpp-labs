@@ -23,36 +23,31 @@ jobs:
       - name: Install Build Wrapper
         uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
 
-      - name: Install gcovr for coverage
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcovr lcov
+      - name: Install gcovr
+        run: sudo apt-get update && sudo apt-get install -y gcovr lcov
 
-      - name: Build and test labs
+      - name: Build & Scan Labs
         run: |
           for lab in lab1 lab2 lab3 lab4; do
-            echo "Building ${lab}"
+            echo "=== Building ${lab} ==="
             rm -rf ${lab}/build
             mkdir ${lab}/build
             cmake -S ${lab} -B ${lab}/build -DCMAKE_CXX_FLAGS="--coverage"
             build-wrapper-linux-x86-64 --out-dir ${lab}/build_wrapper cmake --build ${lab}/build --config Release
 
-            echo "Running tests for ${lab}"
+            echo "=== Running gcov coverage for ${lab} ==="
             cd ${lab}/build
-            ctest --output-on-failure
-            cd ../../
+            make clean || true
+            lcov --capture --directory . --output-file coverage.info
+            lcov --remove coverage.info '/usr/*' --output-file coverage.info
+            genhtml coverage.info --output-directory coverage_html
+            cd ../..
 
-            echo "Generating coverage report for ${lab}"
-            gcovr -r ${lab} --xml -o ${lab}/coverage.xml
+            echo "=== Scanning ${lab} with SonarCloud ==="
+            sonar-scanner \
+              -Dsonar.projectKey=ekuzm_cpp-${lab} \
+              -Dsonar.organization=${{ env.SONAR_ORG }} \
+              -Dsonar.sources=${lab} \
+              -Dsonar.cfamily.compile-commands=${lab}/build_wrapper/compile_commands.json \
+              -Dsonar.cfamily.gcov.reportsPath=${lab}/build/coverage.info
           done
-
-      - name: SonarCloud scan
-        uses: SonarSource/sonarqube-scan-action@v4
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.organization=${{ env.SONAR_ORG }}
-            -Dsonar.sources=lab1,lab2,lab3,lab4
-            -Dsonar.cfamily.compile-commands=lab1/build_wrapper/compile_commands.json,lab2/build_wrapper/compile_commands.json,lab3/build_wrapper/compile_commands.json,lab4/build_wrapper/compile_commands.json
-            -Dsonar.cfamily.gcov.reportsPath=lab1,lab2,lab3,lab4
