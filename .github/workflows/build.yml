@@ -50,6 +50,12 @@ jobs:
           mkdir lab4/build
           cmake -S lab4 -B lab4/build 
           build-wrapper-linux-x86-64 --out-dir lab4/build_wrapper cmake --build lab4/build --config Release
+      - name: Build lab5
+        run: |
+          rm -rf lab5/build
+          mkdir lab5/build
+          cmake -S lab5 -B lab5/build 
+          build-wrapper-linux-x86-64 --out-dir lab5/build_wrapper cmake --build lab5/build --config Release
 
       - name: SonarCloud scan lab1
         uses: SonarSource/sonarqube-scan-action@v4
@@ -94,3 +100,13 @@ jobs:
             -Dsonar.organization=${{ env.SONAR_ORG }}
             -Dsonar.sources=lab4
             -Dsonar.cfamily.compile-commands=lab4/build_wrapper/compile_commands.json
+      - name: SonarCloud scan lab5
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=ekuzm_cpp-lab5
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.sources=lab5
+            -Dsonar.cfamily.compile-commands=lab5/build_wrapper/compile_commands.json
