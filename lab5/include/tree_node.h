@@ -16,7 +16,7 @@ struct TreeNode {
 };
 
 template <typename T>
-TreeNode<T>::TreeNode(T value) : data(std::move(value)) {}
+TreeNode<T>::TreeNode(T value) : data(std::move(value))` {}
 
 template <typename T>
 void TreeNode<T>::traverseTopDown(TreeNode<T>* node) const {
