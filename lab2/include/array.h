@@ -6,7 +6,7 @@ class Array {
     int *data;
     int size;
 
-  public:
+   public:
     Array();
     explicit Array(int arr_size);
     ~Array();
@@ -20,5 +20,4 @@ class Array {
     bool isEmpty() const;
     friend void input(Array &arr, const std::string &msg);
     friend void show(Array arr, const std::string &msg);
-    friend void increment(Array &arr, int num);
 };
