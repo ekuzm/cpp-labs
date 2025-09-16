@@ -21,7 +21,7 @@ class BinaryTree {
 
    public:
     BinaryTree();
-    BinaryTree(T value);
+    explicit BinaryTree(T value);
     BinaryTree(const BinaryTree &other);
     BinaryTree(BinaryTree &&move) noexcept;
     ~BinaryTree();

@@ -6,8 +6,8 @@ template <typename T>
 
 struct TreeNode {
     T data;
-    TreeNode* left;
-    TreeNode* right;
+    TreeNode* left = nullptr;
+    TreeNode* right = nullptr;
 
     explicit TreeNode(T value);
     void traverseTopDown(TreeNode<T>* node) const;
@@ -16,8 +16,7 @@ struct TreeNode {
 };
 
 template <typename T>
-TreeNode<T>::TreeNode(T value)
-    : data(std::move(value)), left(nullptr), right(nullptr) {}
+TreeNode<T>::TreeNode(T value) : data(std::move(value)) {}
 
 template <typename T>
 void TreeNode<T>::traverseTopDown(TreeNode<T>* node) const {
