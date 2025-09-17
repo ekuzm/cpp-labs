@@ -11,7 +11,7 @@ class Date {
     int getDaysInMonth() const;
 
     static void showDateFormatException(const std::string& date,
-                                        const std::exception& exc);
+                                        const std::string& reason);
 
    public:
     Date() = default;

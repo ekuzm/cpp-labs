@@ -4,6 +4,12 @@
 #include "utils.h"
 
 void Program::inputDate() {
+    if (!date.isEmpty()) {
+        std::cout << kRedColor << "\nError, date is already full" << kWhiteColor
+                  << std::endl;
+        return;
+    }
+
     std::string str_date;
 
     while (date.isEmpty()) {
