@@ -129,7 +129,7 @@ jobs:
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
 
-            - name: SonarCloud scan lab6
+      - name: SonarCloud scan lab6
         uses: SonarSource/sonarqube-scan-action@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
