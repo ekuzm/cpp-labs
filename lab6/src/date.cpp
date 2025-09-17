@@ -59,7 +59,9 @@ void Date::parse(const std::string& str) {
 
         *this = tmp;
 
-    } catch (const std::exception& exc) {
+    } catch (const std::invalid_argument& exc) {
+        showDateFormatException(str, exc);
+    } catch (const std::out_of_range& exc) {
         showDateFormatException(str, exc);
     }
 }
