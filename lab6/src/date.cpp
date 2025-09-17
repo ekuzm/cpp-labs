@@ -20,24 +20,27 @@ int Date::getDaysInMonth() const {
 }
 
 void Date::showDateFormatException(const std::string& date,
-                                   const std::string& reason) {
-    std::cout << kRedColor << "\nIncorrect date format: " << reason
+                                   const std::exception& exc) {
+    std::cout << kRedColor << "\nIncorrect date format: " << exc.what()
               << " | input: " << date << kWhiteColor << std::endl;
 }
 
 void Date::parse(const std::string& str) {
     try {
         if (str.size() != kFormatDateLen) {
-            throw "expected format dd.mm.yy (8 characters)";
+            throw std::invalid_argument(
+                "expected format dd.mm.yy (8 characters)");
         }
 
         if (str[2] != '.' || str[5] != '.') {
-            throw "separator must be a dot at positions 3 and 6";
+            throw std::invalid_argument(
+                "separator must be a dot at positions 3 and 6");
         }
 
         if (!isDigits(str, 0, 2) || !isDigits(str, 3, 2) ||
             !isDigits(str, 6, 2)) {
-            throw "day, month and year must contain only digits";
+            throw std::invalid_argument(
+                "day, month and year must contain only digits");
         }
 
         int tmp_day = std::stoi(str.substr(0, 2));
@@ -45,18 +48,19 @@ void Date::parse(const std::string& str) {
         int tmp_year = std::stoi(str.substr(6, 2));
 
         if (tmp_month < 1 || tmp_month > kMonthCount) {
-            throw "month out of range (01..12)";
+            throw std::invalid_argument("month out of range (01..12)");
         }
 
         Date tmp(tmp_day, tmp_month, tmp_year);
 
         if (tmp_day < 1 || tmp_day > tmp.getDaysInMonth()) {
-            throw "day out of range for this month";
+            throw std::invalid_argument("day out of range for this month");
         }
 
         *this = tmp;
-    } catch (const char* reason) {
-        showDateFormatException(str, std::string(reason));
+
+    } catch (const std::exception& exc) {
+        showDateFormatException(str, exc);
     }
 }
 
