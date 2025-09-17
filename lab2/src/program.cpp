@@ -29,6 +29,7 @@ Program::Program() {
     int opt = 0;
 
     system("clear");
+
     showConstructorsMenu();
 
     while (true) {
