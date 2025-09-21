@@ -39,4 +39,4 @@ bool isValidFileOpen(T& file, const std::string& fileName) {
 }
 
 bool isDigits(const std::string& str, int pos, int len);
-bool isDigits(const std::string& str);
+bool isDigits(const std::string_view& str);
