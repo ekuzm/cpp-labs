@@ -8,20 +8,6 @@
 #include "phone_numbers.h"
 #include "utils.h"
 
-std::ostream& operator<<(std::ostream& ostm, const ATS& ats) {
-    ostm << ats.date << " " << ats.cityCode << " " << ats.cityName << " "
-         << ats.time << " " << ats.mobileTariff << " " << ats.phoneNumber;
-
-    return ostm;
-}
-
-std::istream& operator>>(std::istream& istm, ATS& ats) {
-    istm >> ats.date >> ats.cityCode >> ats.cityName >> ats.time >>
-        ats.mobileTariff >> ats.phoneNumber;
-
-    return istm;
-}
-
 void ATS::add() {
     ATS tmp;
 

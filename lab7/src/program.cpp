@@ -15,7 +15,7 @@ void Program::addRecord() {
               << kWhiteColor << std::endl;
 }
 
-void Program::showAllRecords() {
+void Program::showAllRecords() const {
     if (ats.isEmpty()) {
         std::cout << kRedColor
                   << "\nError: ATS is empty! Please add a record first (use "
@@ -29,10 +29,9 @@ void Program::showAllRecords() {
     std::cout << kGreenColor
               << "\nYou successfully printed full info about ATS on the screen!"
               << kWhiteColor << std::endl;
-    ;
 }
 
-void Program::displayPhoneNumbersByTariff() {
+void Program::displayPhoneNumbersByTariff() const {
     if (ats.isEmpty()) {
         std::cout << kRedColor
                   << "\nError: ATS is empty! Please add a record first (use "

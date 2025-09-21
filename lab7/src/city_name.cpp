@@ -11,7 +11,7 @@ void CityName::showCityFormatException(const std::string& inputCityName,
               << " | input: " << inputCityName << kWhiteColor << std::endl;
 }
 
-bool CityName::isValidCityName(const std::string& str) {
+bool CityName::isValidCityName(const std::string_view& str) {
     std::ifstream fileIn;
 
     std::string fileContent;
@@ -45,7 +45,7 @@ void CityName::parse(const std::string& inputCityName) {
 
         cityName = inputCityName;
 
-    } catch (const std::exception& exc) {
+    } catch (const std::invalid_argument& exc) {
         showCityFormatException(inputCityName, exc);
     }
 }
@@ -66,15 +66,3 @@ void CityName::input() {
 }
 
 bool CityName::isEmpty() const { return cityName.empty(); }
-
-std::ostream& operator<<(std::ostream& ostm, const CityName& name) {
-    ostm << name.cityName;
-
-    return ostm;
-}
-
-std::istream& operator>>(std::istream& istm, CityName& name) {
-    istm >> name.cityName;
-
-    return istm;
-}

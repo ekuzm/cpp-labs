@@ -19,8 +19,19 @@ class ATS {
    public:
     ATS() = default;
 
-    friend std::ostream& operator<<(std::ostream& ostm, const ATS& ats);
-    friend std::istream& operator>>(std::istream& istm, ATS& ats);
+    friend std::ostream& operator<<(std::ostream& ostm, const ATS& ats) {
+        ostm << ats.date << " " << ats.cityCode << " " << ats.cityName << " "
+             << ats.time << " " << ats.mobileTariff << " " << ats.phoneNumber;
+
+        return ostm;
+    }
+
+    friend std::istream& operator>>(std::istream& istm, ATS& ats) {
+        istm >> ats.date >> ats.cityCode >> ats.cityName >> ats.time >>
+            ats.mobileTariff >> ats.phoneNumber;
+
+        return istm;
+    }
 
     void add();
     static void show();

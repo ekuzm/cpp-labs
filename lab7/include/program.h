@@ -6,8 +6,8 @@ class Program {
     ATS ats;
 
     void addRecord();
-    void showAllRecords();
-    void displayPhoneNumbersByTariff();
+    void showAllRecords() const;
+    void displayPhoneNumbersByTariff() const;
 
    public:
     Program();

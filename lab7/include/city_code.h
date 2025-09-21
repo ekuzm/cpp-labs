@@ -15,8 +15,15 @@ class CityCode {
     void input();
     bool isEmpty() const;
 
+    friend std::ostream& operator<<(std::ostream& ostm, const CityCode& code) {
+        ostm << code.cityCode;
 
-    friend std::ostream& operator<<(std::ostream& ostm, const CityCode& code);
+        return ostm;
+    }
 
-    friend std::istream& operator>>(std::istream& istm, CityCode& code);
+    friend std::istream& operator>>(std::istream& istm, CityCode& code) {
+        istm >> code.cityCode;
+
+        return istm;
+    }
 };

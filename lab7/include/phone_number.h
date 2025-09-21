@@ -23,7 +23,26 @@ class PhoneNumber {
     bool isEmpty() const;
 
     friend std::ostream& operator<<(std::ostream& ostm,
-                                    const PhoneNumber& number);
+                                    const PhoneNumber& number) {
+        ostm << number.countryCode << "(" << number.operatorCode << ")"
+             << number.subscriberNumber;
 
-    friend std::istream& operator>>(std::istream& istm, PhoneNumber& number);
+        return ostm;
+    }
+
+    friend std::istream& operator>>(std::istream& istm, PhoneNumber& number) {
+        std::string token;
+
+        if (std::getline(istm, token, '(')) {
+            number.countryCode = token;
+        }
+
+        if (std::getline(istm, token, ')')) {
+            number.operatorCode = token;
+        }
+        if (std::getline(istm, token, ' ')) {
+            number.subscriberNumber = token;
+        }
+        return istm;
+    }
 };

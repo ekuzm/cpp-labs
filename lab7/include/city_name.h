@@ -7,7 +7,7 @@ class CityName {
 
     static void showCityFormatException(const std::string& inputCityName,
                                         const std::exception& exc);
-    static bool isValidCityName(const std::string& str);
+    static bool isValidCityName(const std::string_view& str);
 
    public:
     CityName() = default;
@@ -16,7 +16,15 @@ class CityName {
     void input();
     bool isEmpty() const;
 
-    friend std::ostream& operator<<(std::ostream& ostm, const CityName& name);
+    friend std::ostream& operator<<(std::ostream& ostm, const CityName& name) {
+        ostm << name.cityName;
 
-    friend std::istream& operator>>(std::istream& istm, CityName& name);
+        return ostm;
+    }
+
+    friend std::istream& operator>>(std::istream& istm, CityName& name) {
+        istm >> name.cityName;
+
+        return istm;
+    }
 };

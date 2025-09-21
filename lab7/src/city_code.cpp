@@ -23,7 +23,7 @@ void CityCode::parse(const std::string& inputCityCode) {
 
         cityCode = inputCityCode;
 
-    } catch (const std::exception& exc) {
+    } catch (const std::invalid_argument& exc) {
         showCityCodeFormatException(inputCityCode, exc);
     }
 }
@@ -41,15 +41,3 @@ void CityCode::input() {
 }
 
 bool CityCode::isEmpty() const { return cityCode.empty(); }
-
-std::ostream& operator<<(std::ostream& ostm, const CityCode& code) {
-    ostm << code.cityCode;
-
-    return ostm;
-}
-
-std::istream& operator>>(std::istream& istm, CityCode& code) {
-    istm >> code.cityCode;
-
-    return istm;
-}

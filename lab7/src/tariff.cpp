@@ -12,7 +12,7 @@ void MobileTariff::showTariffFormatException(
               << " | input: " << inputMobileTariff << kWhiteColor << std::endl;
 }
 
-bool MobileTariff::isValidTariff(const std::string& inputMobileTariff) {
+bool MobileTariff::isValidTariff(const std::string_view& inputMobileTariff) {
     std::ifstream fileIn;
 
     std::string fileContent;
@@ -44,7 +44,7 @@ void MobileTariff::parse(const std::string& inputMobileTariff) {
 
         mobileTariff = inputMobileTariff;
 
-    } catch (const std::exception& exc) {
+    } catch (const std::invalid_argument& exc) {
         showTariffFormatException(inputMobileTariff, exc);
     }
 }
@@ -65,19 +65,3 @@ void MobileTariff::input() {
 }
 
 bool MobileTariff::isEmpty() const { return mobileTariff.empty(); }
-
-bool MobileTariff::operator==(const MobileTariff& other) {
-    return (mobileTariff == other.mobileTariff);
-}
-
-std::ostream& operator<<(std::ostream& ostm, const MobileTariff& tariff) {
-    ostm << tariff.mobileTariff;
-
-    return ostm;
-}
-
-std::istream& operator>>(std::istream& istm, MobileTariff& tariff) {
-    istm >> tariff.mobileTariff;
-
-    return istm;
-}

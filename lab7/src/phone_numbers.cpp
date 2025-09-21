@@ -1,5 +1,7 @@
 #include "phone_numbers.h"
 
+PhoneNumbers::PhoneNumbers() { phoneNumbers = new PhoneNumber[cap]; }
+
 PhoneNumbers::PhoneNumbers(const PhoneNumbers& other)
     : phoneNumbers(new PhoneNumber[other.cap]),
       size(other.size),
@@ -47,10 +49,6 @@ PhoneNumbers& PhoneNumbers::operator=(PhoneNumbers&& other) noexcept {
 PhoneNumbers::~PhoneNumbers() { delete[] phoneNumbers; }
 
 void PhoneNumbers::add(const PhoneNumber& number) {
-    if (size == 0) {
-        phoneNumbers = new PhoneNumber[cap];
-    }
-
     if (size >= cap) {
         cap *= 2;
 

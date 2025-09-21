@@ -37,7 +37,7 @@ void PhoneNumber::parse(const std::string& phoneNum) {
         operatorCode = tmpOperatorCode;
         subscriberNumber = tmpSubscriberNum;
 
-    } catch (const std::exception& exc) {
+    } catch (const std::invalid_argument& exc) {
         showPhoneFormatException(phoneNum, exc);
     }
 }
@@ -59,27 +59,4 @@ void PhoneNumber::input() {
 bool PhoneNumber::isEmpty() const {
     return countryCode.empty() || operatorCode.empty() ||
            subscriberNumber.empty();
-}
-
-std::ostream& operator<<(std::ostream& ostm, const PhoneNumber& number) {
-    ostm << number.countryCode << "(" << number.operatorCode << ")"
-         << number.subscriberNumber;
-
-    return ostm;
-}
-
-std::istream& operator>>(std::istream& istm, PhoneNumber& number) {
-    std::string token;
-
-    if (std::getline(istm, token, '(')) {
-        number.countryCode = token;
-    }
-
-    if (std::getline(istm, token, ')')) {
-        number.operatorCode = token;
-    }
-    if (std::getline(istm, token, ' ')) {
-        number.subscriberNumber = token;
-    }
-    return istm;
 }

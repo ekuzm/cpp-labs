@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iomanip>
 #include <iostream>
 
 class Date {
@@ -21,7 +22,28 @@ class Date {
     void input();
     bool isEmpty() const;
 
-    friend std::ostream& operator<<(std::ostream& ostm, const Date& date);
+    friend std::ostream& operator<<(std::ostream& ostm, const Date& date) {
+        ostm << std::setfill('0') << std::setw(2) << date.day << '.'
+             << std::setw(2) << date.month << '.' << std::setw(2) << date.year;
 
-    friend std::istream& operator>>(std::istream& istm, Date& date);
+        return ostm;
+    }
+
+    friend std::istream& operator>>(std::istream& istm, Date& date) {
+        std::string token;
+
+        if (std::getline(istm, token, '.')) {
+            date.day = std::stoi(token);
+        }
+
+        if (std::getline(istm, token, '.')) {
+            date.month = std::stoi(token);
+        }
+
+        if (std::getline(istm, token, ' ')) {
+            date.year = std::stoi(token);
+        }
+
+        return istm;
+    }
 };

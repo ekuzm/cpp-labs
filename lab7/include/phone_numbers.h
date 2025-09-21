@@ -8,7 +8,7 @@ class PhoneNumbers {
     int cap = 1;
 
    public:
-    PhoneNumbers() = default;
+    PhoneNumbers();
 
     PhoneNumbers(const PhoneNumbers& other);
     PhoneNumbers& operator=(const PhoneNumbers& other);
