@@ -6,8 +6,8 @@
 #include "consts.h"
 #include "utils.h"
 
-Date::Date(int in_day, int in_month, int in_year)
-    : day(in_day), month(in_month), year(in_year) {}
+Date::Date(int inDay, int inMonth, int inYear)
+    : day(inDay), month(inMonth), year(inYear) {}
 
 bool Date::isLeapYear() const { return (year % 4 == 0); }
 
@@ -43,17 +43,17 @@ void Date::parse(const std::string& str) {
                 "day, month and year must contain only digits");
         }
 
-        int tmp_day = std::stoi(str.substr(0, 2));
-        int tmp_month = std::stoi(str.substr(3, 2));
-        int tmp_year = std::stoi(str.substr(6, 2));
+        int tmpDay = std::stoi(str.substr(0, 2));
+        int tmpMonth = std::stoi(str.substr(3, 2));
+        int tmpYear = std::stoi(str.substr(6, 2));
 
-        if (tmp_month < 1 || tmp_month > kMonthCount) {
+        if (tmpMonth < 1 || tmpMonth > kMonthCount) {
             throw std::invalid_argument("month out of range (01..12)");
         }
 
-        Date tmp(tmp_day, tmp_month, tmp_year);
+        Date tmp(tmpDay, tmpMonth, tmpYear);
 
-        if (tmp_day < 1 || tmp_day > tmp.getDaysInMonth()) {
+        if (tmpDay < 1 || tmpDay > tmp.getDaysInMonth()) {
             throw std::invalid_argument("day out of range for this month");
         }
 

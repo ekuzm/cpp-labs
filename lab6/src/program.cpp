@@ -10,11 +10,11 @@ void Program::inputDate() {
         return;
     }
 
-    std::string str_date;
+    std::string strDate;
 
     while (date.isEmpty()) {
-        str_date = getValue<std::string>("\nPlease enter a date: ");
-        date.parse(str_date);
+        strDate = getValue<std::string>("\nPlease enter a date: ");
+        date.parse(strDate);
     }
 
     std::cout << kGreenColor << "\nYou have successfully entered the date!"

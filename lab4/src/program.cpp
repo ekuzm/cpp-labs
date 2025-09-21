@@ -23,15 +23,15 @@ void Program::expandCarries() {
 
     if (size + 1 == cap) {
         cap *= 2;
-        auto **new_carriers = new CargoCarrier *[cap];
+        auto **newCarriers = new CargoCarrier *[cap];
 
         for (int i = 0; i < size; i++) {
-            new_carriers[i] = carriers[i];
+            newCarriers[i] = carriers[i];
         }
 
         delete[] carriers;
 
-        carriers = new_carriers;
+        carriers = newCarriers;
     }
 
     size++;
