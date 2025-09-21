@@ -7,7 +7,11 @@ PassengerCarrier::PassengerCarrier(double cost, double speed,
                                    double travelDistance)
     : costPrKm(cost), speedKmH(speed), distance(travelDistance) {}
 
-PassengerCarrier::~PassengerCarrier() = default;
+PassengerCarrier::~PassengerCarrier() {
+    costPrKm = 0;
+    speedKmH = 0;
+    distance = 0;
+}
 
 PassengerCarrier::PassengerCarrier(const PassengerCarrier &other) = default;
 

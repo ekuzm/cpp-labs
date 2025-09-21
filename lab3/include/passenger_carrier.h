@@ -7,12 +7,12 @@ class PassengerCarrier {
     double speedKmH;
     double distance;
 
-  protected:
+   protected:
     PassengerCarrier();
 
     explicit PassengerCarrier(double cost, double speed, double travelDistance);
 
-  public:
+   public:
     virtual ~PassengerCarrier();
     virtual std::string getSound() const;
     double calculateCost() const;
