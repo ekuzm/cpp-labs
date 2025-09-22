@@ -1,4 +1,5 @@
 #include "program.h"
+
 #include "airplane.h"
 #include "car.h"
 #include "consts.h"
@@ -13,7 +14,8 @@ void Program::addCarrier() {
 
     chooseCarrier();
 
-    std::cout << kGreenColor << "\nYou have successfully added carrier!" << kWhiteColor << std::endl;
+    std::cout << kGreenColor << "\nYou have successfully added carrier!"
+              << kWhiteColor << std::endl;
 }
 
 void Program::expandCarries() {
@@ -46,25 +48,29 @@ void Program::chooseCarrier() {
         opt = getNumber("\nPlease enter carriers menu option ", 1, 3);
 
         switch (opt) {
-        case 1:
-            carriers[size - 1] = new Car;
-            return;
-        case 2:
-            carriers[size - 1] = new Train;
-            return;
-        case 3:
-            carriers[size - 1] = new Airplane;
-            return;
-        default:
-            std::cout << kRedColor << "\nError, you picked is an incorrect carrier menu option. Please try again."
-                      << kWhiteColor << std::endl;
+            case 1:
+                carriers[size - 1] = new Car;
+                return;
+            case 2:
+                carriers[size - 1] = new Train;
+                return;
+            case 3:
+                carriers[size - 1] = new Airplane;
+                return;
+            default:
+                std::cout << kRedColor
+                          << "\nError, you picked is an incorrect carrier menu "
+                             "option. Please try again."
+                          << kWhiteColor << std::endl;
         }
     }
 }
 
 void Program::showInfo() const {
     if (size == 0) {
-        std::cout << kRedColor << "\nError, you have not added any carriers yet. Please use option 1 to add a carrier."
+        std::cout << kRedColor
+                  << "\nError, you have not added any carriers yet. Please use "
+                     "option 1 to add a carrier."
                   << kWhiteColor << std::endl;
         return;
     }
@@ -76,7 +82,9 @@ void Program::showInfo() const {
         std::cout << std::endl;
     }
 
-    std::cout << kGreenColor << "You have successfully showed all info about carriers!" << kWhiteColor << std::endl;
+    std::cout << kGreenColor
+              << "You have successfully showed all info about carriers!"
+              << kWhiteColor << std::endl;
 }
 
 void Program::removeCarriers() {
@@ -100,19 +108,23 @@ void Program::run() {
         opt = getNumber("\nPlease enter menu option ", 1, 3);
 
         switch (opt) {
-        case 1:
-            addCarrier();
-            break;
-        case 2:
-            showInfo();
-            break;
-        case 3:
-            removeCarriers();
-            std::cout << kGreenColor << "\nYou have successfully exited the program." << kWhiteColor << std::endl;
-            return;
-        default:
-            std::cout << kRedColor << "\nError, you picked is an incorrect menu option. Please try again."
-                      << kWhiteColor << std::endl;
+            case 1:
+                addCarrier();
+                break;
+            case 2:
+                showInfo();
+                break;
+            case 3:
+                removeCarriers();
+                std::cout << kGreenColor
+                          << "\nYou have successfully exited the program."
+                          << kWhiteColor << std::endl;
+                return;
+            default:
+                std::cout << kRedColor
+                          << "\nError, you picked is an incorrect menu option. "
+                             "Please try again."
+                          << kWhiteColor << std::endl;
         }
     }
 }
