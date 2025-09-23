@@ -7,10 +7,7 @@ std::string Train::getSound() const { return kTrainSound; }
 
 Train::Train()
     : CargoCarrier(
-          getNumber("\nPlease enter train cost (per km): ", kTrainMinCostPrKm,
-                    kTrainMaxCostPrKm),
-          getNumber("\nPlease enter train speed (km/h): ", kTrainMinSpeedKmH,
-                    kTrainMaxSpeedKmH),
+          kTrainCostPerKmInBYN, kTrainSpeedInKmH,
           getNumber("\nPlease enter train travel distance(km): ",
                     kTrainMinDistanceKm, kTrainMaxDistanceKm),
           getCityName(

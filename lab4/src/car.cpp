@@ -7,10 +7,7 @@ std::string Car::getSound() const { return kCarSound; }
 
 Car::Car()
     : CargoCarrier(
-          getNumber("\nPlease enter car cost (per km): ", kCarMinCostPrKm,
-                    kCarMaxCostPrKm),
-          getNumber("\nPlease enter car speed (km/h): ", kCarMinSpeedKmH,
-                    kCarMaxSpeedKmH),
+          kCarCostPerKmInBYN, kCarSpeedInKmH,
           getNumber("\nPlease enter car travel distance(km): ",
                     kCarMinDistanceKm, kCarMaxDistanceKm),
           getCityName(

@@ -7,10 +7,7 @@ std::string Airplane::getSound() const { return kAirplaneSound; }
 
 Airplane::Airplane()
     : CargoCarrier(
-          getNumber("\nPlease enter airplane cost (per km): ",
-                    kAirplaneMinCostPrKm, kAirplaneMaxCostPrKm),
-          getNumber("\nPlease enter airplane speed (km/h): ",
-                    kAirplaneMinSpeedKmH, kAirplaneMaxSpeedKmH),
+          kAirplaneCostPerKmInBYN, kAirplaneSpeedInKmH,
           getNumber("\nPlease enter airplane travel distance(km): ",
                     kAirplaneMinDistanceKm, kAirplaneMaxDistanceKm),
           getCityName(
