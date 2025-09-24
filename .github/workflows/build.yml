@@ -70,6 +70,13 @@ jobs:
           mkdir lab7/build
           cmake -S lab7 -B lab7/build 
           build-wrapper-linux-x86-64 --out-dir lab7/build_wrapper cmake --build lab7/build --config Release
+      
+      - name: Build lab 8
+        run: |
+          rm -rf lab8/build
+          mkdir lab8/build
+          cmake -S lab8 -B lab8/build 
+          build-wrapper-linux-x86-64 --out-dir lab8/build_wrapper cmake --build lab8/build --config Release
 
       - name: SonarCloud scan lab1
         uses: SonarSource/sonarqube-scan-action@v4
@@ -171,6 +178,21 @@ jobs:
             -Dsonar.organization=${{ env.SONAR_ORG }}
             -Dsonar.sources=lab7
             -Dsonar.cfamily.compile-commands=lab7/build_wrapper/compile_commands.json
+            -Dsonar.coverage.exclusions=**
+            -Dsonar.cfamily.skipCoverage=true
+            -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
+            -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
+            
+      - name: SonarCloud scan lab8
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=ekuzm_cpp-lab8
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.sources=lab8
+            -Dsonar.cfamily.compile-commands=lab8/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
             -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
