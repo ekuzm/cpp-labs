@@ -90,7 +90,7 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab1/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
-            sonar.issue.ignore.multicriteria=e1
+            -Dsonar.issue.ignore.multicriteria=e1
             -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
             -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
 
@@ -106,7 +106,7 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab2/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
-            sonar.issue.ignore.multicriteria=e1
+            -Dsonar.issue.ignore.multicriteria=e1
             -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
             -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
 
@@ -122,7 +122,7 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab3/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
-            sonar.issue.ignore.multicriteria=e1
+            -Dsonar.issue.ignore.multicriteria=e1
             -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
             -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
 
@@ -138,7 +138,7 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab4/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
-            sonar.issue.ignore.multicriteria=e1
+            -Dsonar.issue.ignore.multicriteria=e1
             -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
             -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
 
@@ -154,7 +154,7 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab5/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
-            sonar.issue.ignore.multicriteria=e1
+            -Dsonar.issue.ignore.multicriteria=e1
             -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
             -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
 
@@ -170,7 +170,7 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab6/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
-            sonar.issue.ignore.multicriteria=e1
+            -Dsonar.issue.ignore.multicriteria=e1
             -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
             -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
       
@@ -186,7 +186,7 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab7/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
-            sonar.issue.ignore.multicriteria=e1
+            -Dsonar.issue.ignore.multicriteria=e1
             -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
             -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
             
@@ -202,7 +202,7 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab8/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
-            sonar.issue.ignore.multicriteria=e1
+            -Dsonar.issue.ignore.multicriteria=e1
             -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
             -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
             
