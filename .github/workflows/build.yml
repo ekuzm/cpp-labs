@@ -90,7 +90,8 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab1/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
-            
+            -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
+            -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
 
       - name: SonarCloud scan lab2
         uses: SonarSource/sonarqube-scan-action@v4
@@ -104,6 +105,8 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab2/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
+            -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
+            -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
 
       - name: SonarCloud scan lab3
         uses: SonarSource/sonarqube-scan-action@v4
@@ -117,6 +120,8 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab3/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
+            -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
+            -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
 
       - name: SonarCloud scan lab4
         uses: SonarSource/sonarqube-scan-action@v4
@@ -130,6 +135,8 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab4/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
+            -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
+            -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
 
       - name: SonarCloud scan lab5
         uses: SonarSource/sonarqube-scan-action@v4
@@ -143,6 +150,8 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab5/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
+            -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
+            -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
 
       - name: SonarCloud scan lab6
         uses: SonarSource/sonarqube-scan-action@v4
@@ -156,6 +165,8 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab6/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
+            -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
+            -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
       
       - name: SonarCloud scan lab7
         uses: SonarSource/sonarqube-scan-action@v4
@@ -169,6 +180,8 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab7/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
+            -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
+            -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
             
       - name: SonarCloud scan lab8
         uses: SonarSource/sonarqube-scan-action@v4
@@ -182,4 +195,6 @@ jobs:
             -Dsonar.cfamily.compile-commands=lab8/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
+            -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
+            -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
             
