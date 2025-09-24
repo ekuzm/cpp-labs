@@ -5,13 +5,15 @@
 template <typename T>
 class Algorithm {
    public:
-    bool find(const Array<T>& arr, const T& value);
-    void sort(Array<T>& arr);
+    bool find(const Array<T>& arr, const T& value) const;
+    void sort(Array<T>& arr) const;
 };
 
 template <typename T>
-void Algorithm<T>::sort(Array<T>& arr) {
-    for (size_t i = 1; i < arr.size(); i++) {
+void Algorithm<T>::sort(Array<T>& arr) const {
+    size_t size = arr.size();
+
+    for (size_t i = 1; i < size; i++) {
         T keyValue = arr[i];
         size_t insertPos = i;
 
@@ -24,7 +26,7 @@ void Algorithm<T>::sort(Array<T>& arr) {
 }
 
 template <typename T>
-bool Algorithm<T>::find(const Array<T>& arr, const T& value) {
+bool Algorithm<T>::find(const Array<T>& arr, const T& value) const {
     if (arr.empty()) {
         return false;
     }

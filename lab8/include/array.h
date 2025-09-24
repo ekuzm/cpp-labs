@@ -4,13 +4,13 @@
 
 template <typename T>
 class Array {
-    T* data;
-    size_t dim;
-    size_t cap;
+    T* data = nullptr;
+    size_t dim = 0;
+    size_t cap = 1;
 
    public:
-    Array();
-    Array(size_t inputSize);
+    Array() = default;
+    explicit Array(size_t inputSize);
     Array(const Array& other);
     Array(Array&& move) noexcept;
     ~Array();
@@ -113,11 +113,7 @@ class Array {
 };
 
 template <typename T>
-Array<T>::Array() : data(nullptr), dim(0), cap(1) {}
-
-template <typename T>
-Array<T>::Array(const size_t inputSize)
-    : data(nullptr), dim(inputSize), cap(1) {
+Array<T>::Array(const size_t inputSize) : data(nullptr), dim(inputSize) {
     if (dim != 0) {
         cap = 2 * dim;
         data = new T[cap];
@@ -183,7 +179,7 @@ template <typename T>
 void Array<T>::reserve(size_t newCap) {
     if (newCap <= cap) return;
 
-    T* newData = new T[newCap];
+    auto* newData = new T[newCap];
     for (size_t i = 0; i < dim; ++i) {
         newData[i] = data[i];
     }
