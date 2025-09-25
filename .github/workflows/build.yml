@@ -92,7 +92,7 @@ jobs:
             -Dsonar.cfamily.skipCoverage=true
             -Dsonar.issue.ignore.multicriteria=e1
             -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
-            -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
+            -Dsonar.issue.ignore.multicriteria.e1.resourceKey="**/*.cpp"
 
       - name: SonarCloud scan lab2
         uses: SonarSource/sonarqube-scan-action@v4
