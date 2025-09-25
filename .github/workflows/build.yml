@@ -205,3 +205,4 @@ jobs:
             -Dsonar.issue.ignore.multicriteria=e1
             -Dsonar.issue.ignore.multicriteria.e1.ruleKey=cxx:S5025
             -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.cpp
+            
