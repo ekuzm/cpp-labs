@@ -113,7 +113,7 @@ class Array {
 };
 
 template <typename T>
-Array<T>::Array(const size_t inputSize) : data(nullptr), dim(inputSize) {
+Array<T>::Array(const size_t inputSize) : dim(inputSize) {
     if (dim != 0) {
         cap = 2 * dim;
         data = new T[cap];
